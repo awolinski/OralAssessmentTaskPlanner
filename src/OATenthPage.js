@@ -28,6 +28,62 @@ const OATenthPage = props => {
       </div>
       <div>{reminder}</div>
       <div>{chose}</div>
+      <div>
+        <div><label>{pq1}</label></div>
+        <div>
+          <Field name="pq1" component="input" type="text">
+          </Field>
+        </div>
+      </div>
+      <div>
+        <div><label>{pq2}</label></div>
+        <div>
+          <Field name="pq2" component="input" type="text">
+          </Field>
+        </div>
+      </div>
+      <div>
+        <div><label>{pq3}</label></div>
+        <div>
+          <Field name="pq3" component="input" type="text">
+          </Field>
+        </div>
+      </div>
+      <div>
+        <div><label>{pq4}</label></div>
+        <div>
+          <Field name="pq4" component="input" type="text">
+          </Field>
+        </div>
+      </div>
+      <div>
+        <div><label>{pq5}</label></div>
+        <div>
+          <Field name="pq5" component="input" type="text">
+          </Field>
+        </div>
+      </div>
+      <div>
+        <div><label>{pq6}</label></div>
+        <div>
+          <Field name="pq6" component="input" type="text">
+          </Field>
+        </div>
+      </div>
+      <div>
+        <div><label>{pq7}</label></div>
+        <div>
+          <Field name="pq7" component="input" type="text">
+          </Field>
+        </div>
+      </div>
+      <div>
+        <div><label>{pq8}</label></div>
+        <div>
+          <Field name="pq8" component="input" type="text">
+          </Field>
+        </div>
+      </div>
       <a href="mailto:?Subject=Simple Share Buttons&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://simplesharebuttons.com">
           <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
       </a>
