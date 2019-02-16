@@ -15,12 +15,8 @@ const pq8 = 'How will you mitigate any potential repercussions that the assessme
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false
 
-const getChoices = (values) =>{
-  console.log(values)
-}
-
 const OATenthPage = props => {
-  const { handleSubmit, previousPage } = props
+  const { handleSubmit, previousPage, formValues } = props
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -83,6 +79,9 @@ const OATenthPage = props => {
           <Field name="pq8" component="input" type="text">
           </Field>
         </div>
+      </div>
+    <div>
+        <h3>Goodluck with your class!</h3>
       </div>
       <a href="mailto:?Subject=Simple Share Buttons&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://simplesharebuttons.com">
           <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />

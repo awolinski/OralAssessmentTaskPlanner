@@ -16,14 +16,14 @@ class OAForm extends Component {
     super(props)
     this.nextPage = this.nextPage.bind(this)
     this.returnToWelcomePage = this.returnToWelcomePage.bind(this)
-    this.calculateResults = this.calculateResults.bind(this)
     this.previousPage = this.previousPage.bind(this)
     this.state = {
-      page: 1
+      page: 1,
+      formValues: {},
     }
   }
-  nextPage() {
-    this.setState({ page: this.state.page + 1 })
+  nextPage(values) {
+    this.setState({ formValues: values, page: this.state.page + 1 })
   }
 
   previousPage() {
@@ -32,11 +32,6 @@ class OAForm extends Component {
 
   returnToWelcomePage() {
     window.location.reload(true);
-  }
-
-  calculateResults() {
-    // calculate results function
-    this.setState({ page: this.state.page + 1 })
   }
 
   render() {
@@ -89,12 +84,14 @@ class OAForm extends Component {
         )}
         {page === 9 && (
           <OANinthPage
+            formValues={this.state.formValues}
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
           />
         )}
         {page === 10 && (
           <OATenthPage
+            formValues={this.state.formValues}
             previousPage={this.previousPage}
             onSubmit={this.returnToWelcomePage}
           />

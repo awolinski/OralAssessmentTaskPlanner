@@ -15,10 +15,6 @@ const store = (window.devToolsExtension
   ? window.devToolsExtension()(createStore)
   : createStore)(reducer)
 
-const showResults = (values) =>{
-  console.log(values)
-}
-
 let render = () => {
   const OAForm = require('./OAForm').default
   const readme = require('./Wizard.md')
@@ -36,7 +32,7 @@ let render = () => {
   const OATenthPage = require('!!raw-loader!./OATenthPage')
   ReactDOM.hydrate(
     <Provider store={store}>
-      <OAForm onSubmit={showResults} />
+      <OAForm />
     </Provider>,
     dest
   )

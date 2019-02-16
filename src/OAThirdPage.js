@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import { Field, reduxForm } from 'redux-form'
-import renderField from './renderField'
 import {languageLevel} from './Components/DropdownOptions'
 
 const q9 = 'What is the minimum English proficiency that is needed for acceptance to your institution?'
