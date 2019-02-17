@@ -7,6 +7,9 @@ import {
   Values, //    <Values form="OA" />
 } from 'redux-form-website-template'
 
+// TODO: modify/delete require('Wizard.md') file and remove anything else not
+// used/needed eg:import Values
+
 const dest = document.getElementById('content')
 const reducer = combineReducers({
   form: reduxFormReducer // mounted under "form"
@@ -19,7 +22,6 @@ let render = () => {
   const OAForm = require('./OAForm').default
   const readme = require('./Wizard.md')
   const rawWizard = require('!!raw-loader!./OAForm')
-  const rawRenderField = require('!!raw-loader!./renderField')
   const OAFirstPage = require('!!raw-loader!./OAFirstPage')
   const OASecondPage = require('!!raw-loader!./OASecondPage')
   const OAThirdPage = require('!!raw-loader!./OAThirdPage')

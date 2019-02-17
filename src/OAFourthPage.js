@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import { Field, reduxForm } from 'redux-form'
-import renderField from './renderField'
 import { importanceOptions, oftenOptions } from './Components/DropdownOptions'
 
 const q12 = 'How often are oral exams used at your institution?'

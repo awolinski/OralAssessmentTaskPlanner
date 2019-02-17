@@ -1,6 +1,9 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import renderField from './renderField'
+
+// TODO: Change font, center title and text, update description with time to complete
+// application and how to use it, fix background image to adjust size with screen
+// size adjustment
 
 const background = {"background": 'url("https://image.freepik.com/free-photo/modern-white-office-desk-table-with-laptop-cup-coffee-supplies_33795-1.jpg") no-repeat', "height": "100vh", "width": "100vw", "background-size": "cover"}
 const title = {"font-family": "Times New Roman", "font-size": "70px", "position": "fixed", "bottom": "60%", "right": "30%"}

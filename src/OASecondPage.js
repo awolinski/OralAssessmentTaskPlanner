@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Field, reduxForm } from 'redux-form'
-import {extentOptions, progressOptions, classSize, percentage, hours} from './Components/DropdownOptions'
+import {tools, environment, extentOptions, progressOptions, classSize, percentage, hours} from './Components/DropdownOptions'
 
 const q1 = 'Approximately how many students do you have in your class?'
 const q2 = 'Approximately what percentage of your students are second language learners?'
@@ -11,9 +11,6 @@ const q5 ='To what extent do your students share a common cultural background?'
 const q6 = 'Where does your course fit into their academic program?'
 const q7 = 'Are your students in the course predominantly from the same discipline?'
 const q8 = 'Which of the following describes your classroom environment?'
-
-const environment = ['Collaborative', 'Supportive', 'Competitive', 'Autonomous']
-const tools = ['Overhead projector', 'Projector', 'Computer', 'Sound system', 'Blackboard', 'Whiteboard']
 
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false
