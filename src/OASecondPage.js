@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import { Field, reduxForm } from 'redux-form'
-import {tools, environment, extentOptions, progressOptions, classSize, percentage, hours} from './Components/DropdownOptions'
+import {tools, environment, extentOptions, progressOptions, classSize, percentage, hours, weeks} from './Components/DropdownOptions'
 
 const q1 = 'Approximately how many students do you have in your class?'
 const q2 = 'Approximately what percentage of your students are second language learners?'
 const q3 = 'How many hours of class do you have each week?'
+const q3b = 'How many weeks of class do you have?'
 const q4 = 'Which of the following tools do you have access to in your classroom?'
-
 const q5 ='To what extent do your students share a common cultural background?' 
 const q6 = 'Where does your course fit into their academic program?'
 const q7 = 'Are your students in the course predominantly from the same discipline?'
@@ -18,9 +18,7 @@ const renderError = ({ meta: { touched, error } }) =>
 class OASecondPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      colors2: [],
-    };
+    this.state = {};
   }
 
   render () {
@@ -61,6 +59,17 @@ class OASecondPage extends Component {
                 <option value={option} key={option}>{option}</option>)}
             </Field>
             <Field name="q3" component={renderError} />
+          </div>
+        </div>
+        <div>
+          <div><label>{q3b}</label></div>
+          <div>
+            <Field name="q3b" component="select">
+              <option value="">Select</option>
+              {weeks.map(option =>
+                <option value={option} key={option}>{option}</option>)}
+            </Field>
+            <Field name="q3b" component={renderError} />
           </div>
         </div>
         <div>
@@ -155,6 +164,9 @@ const validate = values => {
   }
   if (!values.q3) {
     errors.q3 = 'Required'
+  }
+  if (!values.q3b) {
+    errors.q3b = 'Required'
   }
   if (!values.q5) {
     errors.q5 = 'Required'

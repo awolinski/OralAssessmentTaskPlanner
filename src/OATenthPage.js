@@ -12,9 +12,6 @@ const pq6 = 'How do you ensure that you are not imposing your personal values on
 const pq7 = 'How do you accomodate different student needs and world views?'
 const pq8 = 'How will you mitigate any potential repercussions that the assessment method may have?'
 
-const renderError = ({ meta: { touched, error } }) =>
-  touched && error ? <span>{error}</span> : false
-
 const OATenthPage = props => {
   const { handleSubmit, previousPage, formValues } = props
 

@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import {languageLevel} from './Components/DropdownOptions'
+import { languageLevel, languageLevelIelts } from './Components/DropdownOptions'
 
 const q9 = 'What is the minimum English proficiency that is needed for acceptance to your institution?'
 const q10 = 'What resources does your institution provide for second language learners?'
@@ -52,7 +52,7 @@ class OAThirdPage extends Component {
           <label>IELTS</label>
           <Field name="q9b" component="select">
             <option value="">Select</option>
-            {languageLevel.map(option =>
+            {languageLevelIelts.map(option =>
               <option value={option} key={option}>{option}</option>)}
           </Field>
         </div>

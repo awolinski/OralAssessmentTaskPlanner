@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { importanceOptions, oftenOptions, extentOptions } from './Components/DropdownOptions'
+import { oftenOptions, extentOptions } from './Components/DropdownOptions'
 
 const q32 = 'How often do you intend to use ungraded demonstrations?'
 const q33 = 'How often do you intend to use ungraded presentations?'
