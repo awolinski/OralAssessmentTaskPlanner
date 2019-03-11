@@ -109,7 +109,7 @@ class OANinthPage extends Component {
   }
 
   render () {
-    const { handleSubmit, previousPage, formValues } = this.props
+    const { handleSubmit, previousPage, formValues, savePage } = this.props
 
     return (
       <form onSubmit={handleSubmit}>
@@ -264,6 +264,9 @@ class OANinthPage extends Component {
       <div>
         <button type="button" className="previous" onClick={previousPage}>
           Previous
+        </button>
+        <button type="button" onClick={savePage}>
+          Save page
         </button>
         <button type="submit" className="next">
           Next

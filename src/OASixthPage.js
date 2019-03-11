@@ -59,7 +59,7 @@ class OASixthPage extends Component {
     const style43 = this.state.hide43 ? {display: 'none'} : {};
     const style44 = this.state.hide44 ? {display: 'none'} : {};
     const style45 = this.state.hide45 ? {display: 'none'} : {};
-    const { handleSubmit, previousPage } = this.props
+    const { handleSubmit, previousPage, savePage } = this.props
 
     return (
       <form onSubmit={handleSubmit}>
@@ -212,6 +212,9 @@ class OASixthPage extends Component {
       <div>
         <button type="button" className="previous" onClick={previousPage}>
           Previous
+        </button>
+        <button type="button" onClick={savePage}>
+          Save page
         </button>
         <button type="submit" className="next">
           Next

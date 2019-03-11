@@ -17,6 +17,7 @@ class OAForm extends Component {
     this.nextPage = this.nextPage.bind(this)
     this.returnToWelcomePage = this.returnToWelcomePage.bind(this)
     this.previousPage = this.previousPage.bind(this)
+    this.savePage = this.savePage.bind(this)
     this.state = {
       page: 1,
       formValues: {},
@@ -30,6 +31,10 @@ class OAForm extends Component {
     this.setState({ page: this.state.page - 1 })
   }
 
+  savePage() {
+    window.print()
+  }
+
   returnToWelcomePage() {
     if (window.confirm("Are you sure you want to start over? Any unsaved changes will be lost.")) {
       window.location.reload(true);
@@ -39,6 +44,7 @@ class OAForm extends Component {
   render() {
     const { onSubmit } = this.props
     const { page } = this.state
+
     return (
       <div>
         {page === 1 && <OAFirstPage onSubmit={this.nextPage}/>}
@@ -46,42 +52,49 @@ class OAForm extends Component {
           <OASecondPage
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
+            savePage={this.savePage}
           />
         )}
         {page === 3 && (
           <OAThirdPage
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
+            savePage={this.savePage}
           />
         )}
         {page === 4 && (
           <OAFourthPage
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
+            savePage={this.savePage}
           />
         )}
         {page === 5 && (
           <OAFifthPage
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
+            savePage={this.savePage}
           />
         )}
         {page === 6 && (
           <OASixthPage
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
+            savePage={this.savePage}
           />
         )}
         {page === 7 && (
           <OASeventhPage
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
+            savePage={this.savePage}
           />
         )}
         {page === 8 && (
           <OAEighthPage
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
+            savePage={this.savePage}
           />
         )}
         {page === 9 && (
@@ -89,6 +102,7 @@ class OAForm extends Component {
             formValues={this.state.formValues}
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
+            savePage={this.savePage}
           />
         )}
         {page === 10 && (
@@ -96,7 +110,8 @@ class OAForm extends Component {
             formValues={this.state.formValues}
             previousPage={this.previousPage}
             onSubmit={this.returnToWelcomePage}
-          />
+            savePage={this.savePage}
+        />
         )}
       </div>
     )

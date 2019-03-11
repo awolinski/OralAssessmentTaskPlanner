@@ -7,11 +7,10 @@ This adaptive tool was designed for undergraduate instructors of courses where E
 ## TODO: 
     - Embed video/links to help define language levels that show upon button click page 2
     - Create functions to calculate results and display them in the tables
-    - Show what was selected on page 10
     - Fix formatting on all pages - especially table that renders results on page 9
     - Bug fixes such as validation error on page 7
     - Re-enable validation once testing is complete 
-    - Add functionality to export and print results and format the current icons          properly on page 10
+    - Add functionality to export and print results and format the current icons       properly on page 10
     - Host application on GitHub Pages
     - Write unit tests
 
@@ -20,6 +19,8 @@ This adaptive tool was designed for undergraduate instructors of courses where E
 ## To run locally
 
 ```
+Clone or download the repo
+cd OralAssessmentTaskPlanner
 npm install
 npm start
 ```

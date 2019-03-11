@@ -56,7 +56,7 @@ class OAFourthPage extends Component {
   render () {
     const style16 = this.state.hide16 ? {display: 'none'} : {};
     const style17 = this.state.hide17 ? {display: 'none'} : {};
-    const { handleSubmit, previousPage } = this.props
+    const { handleSubmit, previousPage, savePage } = this.props
 
     return (
       <form onSubmit={handleSubmit}>
@@ -333,6 +333,9 @@ class OAFourthPage extends Component {
       <div>
         <button type="button" className="previous" onClick={previousPage}>
           Previous
+        </button>
+        <button type="button" onClick={savePage}>
+            Save page
         </button>
         <button type="submit" className="next">
           Next

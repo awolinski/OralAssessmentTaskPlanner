@@ -13,7 +13,7 @@ const pq7 = 'How do you accomodate different student needs and world views?'
 const pq8 = 'How will you mitigate any potential repercussions that the assessment method may have?'
 
 const OATenthPage = props => {
-  const { handleSubmit, previousPage, formValues } = props
+  const { handleSubmit, previousPage, formValues, savePage } = props
 
   let methods = []
   formValues.interviewsSelect ? methods.push('Interviews') : ''
@@ -98,15 +98,15 @@ const OATenthPage = props => {
     <div>
         <h3>Goodluck with your class!</h3>
       </div>
-      <a href="mailto:?Subject=Simple Share Buttons&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://simplesharebuttons.com">
+      <a href="mailto:?Subject=Oral%20Assessment%20Task%20Planner&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://simplesharebuttons.com">
           <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
       </a>
-      <a href="javascript:;" onclick="window.print()">
-        <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" />
-    </a>
       <div>
         <button type="button" className="previous" onClick={previousPage}>
           Previous
+        </button>
+        <button type="button" onClick={savePage}>
+          Save page
         </button>
         <button type="submit" className="next">
           Start over

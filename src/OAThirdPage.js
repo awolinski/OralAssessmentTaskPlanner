@@ -31,7 +31,7 @@ class OAThirdPage extends Component {
 
   render () {
     const style = this.state.hide ? {display: 'none'} : {};
-    const { handleSubmit, previousPage } = this.props
+    const { handleSubmit, previousPage, savePage } = this.props
 
     return (
       <form onSubmit={handleSubmit}>
@@ -111,6 +111,9 @@ class OAThirdPage extends Component {
         <button type="button" className="previous" onClick={previousPage}>
           Previous
         </button>
+        <button type="button" onClick={savePage}>
+            Save page
+          </button>
         <button type="submit" className="next">
           Next
         </button>
