@@ -98,9 +98,6 @@ const OATenthPage = props => {
     <div>
         <h3>Goodluck with your class!</h3>
       </div>
-      <a href="mailto:?Subject=Oral%20Assessment%20Task%20Planner&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://simplesharebuttons.com">
-          <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
-      </a>
       <div>
         <button type="button" className="previous" onClick={previousPage}>
           Previous

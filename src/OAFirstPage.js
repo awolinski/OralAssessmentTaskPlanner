@@ -5,26 +5,37 @@ import { Field, reduxForm } from 'redux-form'
 // application and how to use it, fix background image to adjust size with screen
 // size adjustment
 
-const background = {"background": 'url("https://image.freepik.com/free-photo/modern-white-office-desk-table-with-laptop-cup-coffee-supplies_33795-1.jpg") no-repeat', "height": "100vh", "width": "100vw", "background-size": "cover"}
-const title = {"font-family": "Times New Roman", "font-size": "70px", "position": "fixed", "bottom": "60%", "right": "30%"}
-const button = {"position": "fixed", "bottom": "30%", "right": "60%"}
-const info = {"position": "fixed", "bottom": "45%", "right": "30%", "font-family": "Times New Roman"}
+const background = {"opacity": "0.5", "position": "absolute", "width": "100%", "height": "100%", "top": "0", "left": "0" }
+const title1 = {"font-size": "40px", "position": "absolute", "top": "15%", "left": "8%", "z-index": "2", "font-weight": "200"}
+const title2 = {"font-size": "70px", "position": "absolute", "top": "29%", "left": "18%", "z-index": "2", "font-weight": "300"}
+const button = {"position": "fixed", "position": "fixed", "bottom": "12%", "left": "70%"}
+const info = {"font-size": "15px", "position": "absolute", "z-index": "2", "top": "57%", "padding-left": "20%", "padding-right": "20%", "background-color": "white", "line-height": "20px", "font-weight": "220"}
+const icon = {"position": "fixed", "bottom": "7%", "left": "3.5%"}
+const share = {"position": "fixed", "bottom": "4%", "left": "4%", "font-weight": "300"}
 
-const welcomeTitle = "Welcome to the Oral Assessment Task Planner"
-const programInfo = "This adaptive tool was designed for undergraduate instructors of courses where English is the language of instruction. It can be used to plan classroom activities and assessments that are fair to all students regardless of students’ background and language abilities. Further information about the tool can be found at https://link.springer.com/article/10.1007%2Fs11423-015-9375-8."
+const programInfo = "This adaptive tool was designed for undergraduate instructors of courses where English is the language of instruction. It can be used to plan classroom activities and assessments that are fair to all students regardless of students’ background and language abilities. Further information about the tool can be found at: https://link.springer.com/article/10.1007%2Fs11423-015-9375-8."
 
 const OAFirstPage = props => {
   const { handleSubmit } = props
   return (
-    <div style={background} >
+    <div>
     <form onSubmit={handleSubmit}>
-      <div><h1 style={title}>{welcomeTitle}</h1></div>
-      <div style={info}>{programInfo}</div>
+      <img style={background} src="https://cloudfront.ualberta.ca/-/media/ualberta/university-relations/community-relations/photos/12784-06-115-athabasca02.png" />
+      <div style={title1}>Welcome to the </div>
+      <div style={title2}>Oral Assessment Task Planner</div>
+      <div style={info}>
+        <br/>{programInfo}<br/><br/>
+      </div>
       <div>
         <button type="submit" className="next" style={button}>
           Get started
         </button>
       </div>
+      <div style={icon}>
+        <a href="mailto:?Subject=Oral%20Assessment%20Task%20Planner&amp;Body=https://github.com/awolinski/OralAssessmentTaskPlanner">
+          <img src="https://cdn3.iconfinder.com/data/icons/social-media-circle-flat-1/1024/mail-01-01-512.png" height="50px" width="50px" alt="Email" />
+        </a></div>
+        <div style={share}>Share</div>
     </form>
     </div>
   )
