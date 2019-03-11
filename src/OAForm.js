@@ -31,7 +31,9 @@ class OAForm extends Component {
   }
 
   returnToWelcomePage() {
-    window.location.reload(true);
+    if (window.confirm("Are you sure you want to start over? Any unsaved changes will be lost.")) {
+      window.location.reload(true);
+    }
   }
 
   render() {

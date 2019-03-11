@@ -5,10 +5,9 @@ This adaptive tool was designed for undergraduate instructors of courses where E
 ## Develop is in progress. 
 
 ## TODO: 
-    - Embed video/links to help defind language levels that show upon button click
-    - Fix all numeric dropdown options to have correct ranges
+    - Embed video/links to help define language levels that show upon button click page 2
     - Create functions to calculate results and display them in the tables
-    - Add select buttons to table rows and show what was selected on page 10
+    - Show what was selected on page 10
     - Fix formatting on all pages - especially table that renders results on page 9
     - Bug fixes such as validation error on page 7
     - Re-enable validation once testing is complete 

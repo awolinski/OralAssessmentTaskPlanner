@@ -3,16 +3,10 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
 import { reducer as reduxFormReducer } from 'redux-form'
-import {
-  Values, //    <Values form="OA" />
-} from 'redux-form-website-template'
-
-// TODO: modify/delete require('Wizard.md') file and remove anything else not
-// used/needed eg:import Values
 
 const dest = document.getElementById('content')
 const reducer = combineReducers({
-  form: reduxFormReducer // mounted under "form"
+  form: reduxFormReducer
 })
 const store = (window.devToolsExtension
   ? window.devToolsExtension()(createStore)
@@ -20,7 +14,6 @@ const store = (window.devToolsExtension
 
 let render = () => {
   const OAForm = require('./OAForm').default
-  const readme = require('./Wizard.md')
   const rawWizard = require('!!raw-loader!./OAForm')
   const OAFirstPage = require('!!raw-loader!./OAFirstPage')
   const OASecondPage = require('!!raw-loader!./OASecondPage')

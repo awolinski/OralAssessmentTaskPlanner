@@ -15,16 +15,22 @@ const pq8 = 'How will you mitigate any potential repercussions that the assessme
 const OATenthPage = props => {
   const { handleSubmit, previousPage, formValues } = props
 
-  // TODO: fix the below code otherwise commas in wrong places depending on selection
-  // These values aren't coming through
-  const method1 = formValues.interviews ? formValues.interviews : ''
-  const method2 = formValues.oralExams ? `, ${formValues.oralExams}` : ''
-  const method3 = formValues.groupWork ? `, ${formValues.groupWork}` : ''
-  const method4 = formValues.presentations ? `, ${formValues.presentations}` : ''
-  const method5 = formValues.demonstrations ? `, ${formValues.demonstrations}` : ''
-  const method6 = formValues.participation ? `, ${formValues.participation}` : ''
-  const method7 = formValues.simulation ? `, ${formValues.simulation}` : ''
-  const method8 = formValues.portfolio ? `, ${formValues.portfolio}` : ''
+  let methods = []
+  formValues.interviewsSelect ? methods.push('Interviews') : ''
+  formValues.oralExamsSelect ? methods.push('Oral Exams') : ''
+  formValues.groupWorkSelect ? methods.push('Group Work / Discussions') : ''
+  formValues.presentationsSelect ? methods.push('Presentations') : ''
+  formValues.demonstrationsSelect ? methods.push('Demonstrations') : ''
+  formValues.participationSelect ? methods.push('Participation') : ''
+  formValues.simulationSelect ? methods.push('Role Play / Simulation') : ''
+  formValues.speakingPortfolioSelect ? methods.push('Speaking Portfolio') : ''
+
+  if (methods.length > 1) {
+    for (let i = 0; i < methods.length - 1; i++ ){
+      methods[i] = methods[i] + ', '
+    }
+    methods[methods.length-1] = ' and ' + methods[methods.length-1]
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -32,7 +38,7 @@ const OATenthPage = props => {
         <h3>Planning Questions</h3>
       </div>
       <div>{reminder}</div>
-      <div>{chose}{method1}{method2}{method3}{method4}{method5}{method6}{method7}{method8}</div>
+      <div>{chose}{methods}</div>
       <div>
         <div><label>{pq1}</label></div>
         <div>
