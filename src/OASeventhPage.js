@@ -18,7 +18,8 @@ const q51c = 'Are students assessing each other’s work?'
 const q51d = 'How will you resolve differences in scoring between assessors?'
 const q51e = 'Will you train the other assessors?'
 const q52 = 'How do you intend to train the other assessors?'
-const q53 = 'How do you plan to communicate the criteria?'
+const q53 = 'How do you plan to '
+const q53b = 'communicate the criteria?'
 const q54 = 'Do you verify (i.e., double check) the grades that you assign?'
 const q55 = 'Do you plan to use more than 1 assessment method or task to determine the student grades?'
 
@@ -67,11 +68,13 @@ class OASeventhPage extends Component {
     const style48 = this.state.hide48 ? {display: 'none'} : {};
     const style51 = this.state.hide51 ? {display: 'none'} : {};
     const style51e = this.state.hide51e ? {display: 'none'} : {};
+    const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+
     const { handleSubmit, previousPage, savePage } = this.props
 
     return (
-      <form onSubmit={handleSubmit}>
-      <div>
+      <form onSubmit={handleSubmit} style={formSheet}>
+      <div><br/><br/>
         <h3>Assessment Criteria</h3>
       </div>
       <div>
@@ -175,7 +178,7 @@ class OASeventhPage extends Component {
           <Field name="q49" component={renderError} />
         </div>
       </div>
-      <div>
+      <div><br/><br/>
         <h3>Scoring Practices</h3>
       </div>
       <div>
@@ -257,7 +260,7 @@ class OASeventhPage extends Component {
         </div>
       </div>
       <div>
-        <div><label>{q53}</label></div>
+        <div><label>{q53}<br/>{q53b}</label></div>
         <div>
           <Field name="q53" component="input" type="text">
           </Field>

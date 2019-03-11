@@ -54,13 +54,14 @@ class OAFourthPage extends Component {
   }
 
   render () {
+    const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
     const style16 = this.state.hide16 ? {display: 'none'} : {};
     const style17 = this.state.hide17 ? {display: 'none'} : {};
     const { handleSubmit, previousPage, savePage } = this.props
 
     return (
-      <form onSubmit={handleSubmit}>
-      <div>
+      <form onSubmit={handleSubmit} style={formSheet}>
+      <div><br/><br/>
         <h3>Institutional Assessment Practices</h3>
       </div>
       <div>
@@ -102,7 +103,9 @@ class OAFourthPage extends Component {
           <Field name="q14" component={renderError} />
         </div>
       </div>
-      <div><h3>Purpose of the Assessment</h3></div>
+      <div><br/><br/>
+        <h3>Purpose of the Assessment</h3>
+      </div>
       <div>
         <div><label>{q15}</label></div>
         <div>
@@ -159,7 +162,9 @@ class OAFourthPage extends Component {
           <Field name="q18" component={renderError} />
         </div>
       </div>
-      <div><h3>Importance of Oral Communication Tasks</h3></div>
+      <div><br/><br/>
+        <h3>Importance of Oral Communication Tasks</h3>
+      </div>
       <div>
         <div><label>{q19}</label></div>
         <div>
@@ -251,7 +256,9 @@ class OAFourthPage extends Component {
           <Field name="q25" component={renderError} />
         </div>
       </div>
-      <div><h3>Use of Oral Communication Tasks</h3></div>
+      <div><br/><br/>
+        <h3>Use of Oral Communication Tasks</h3>
+      </div>
       <div>
         <div><label>{q26}</label></div>
         <div>

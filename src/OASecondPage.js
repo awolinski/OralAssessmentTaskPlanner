@@ -23,9 +23,11 @@ class OASecondPage extends Component {
 
   render () {
     const { handleSubmit, previousPage, savePage } = this.props
+    const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+
     return (
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} style={formSheet}>
+        <div><br/><br/>
           <h3>Logistics</h3>
         </div>
         <div>
@@ -89,6 +91,7 @@ class OASecondPage extends Component {
           </div>
         </div>
         <div>
+        <br/><br/>
           <h3>Background Information</h3>
         </div>
         <div>

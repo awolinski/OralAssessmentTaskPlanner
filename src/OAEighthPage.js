@@ -64,11 +64,13 @@ class OAEighthPage extends Component {
     const style61 = this.state.hide61 ? {display: 'none'} : {};
     const style62 = this.state.hide62 ? {display: 'none'} : {};
     const style51e = this.state.hide51e ? {display: 'none'} : {};
+    const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+
     const { handleSubmit, previousPage, savePage } = this.props
 
     return (
-      <form onSubmit={handleSubmit}>
-      <div>
+      <form onSubmit={handleSubmit} style={formSheet}>
+      <div><br/><br/>
         <h3>Student Preparation</h3>
       </div>
       <div>
@@ -200,7 +202,7 @@ class OAEighthPage extends Component {
           <Field name="q65" component={renderError} />
         </div>
       </div>
-      <div>
+      <div><br/><br/>
         <h3>Student Inclusion</h3>
       </div>
       <div>

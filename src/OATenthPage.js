@@ -13,6 +13,8 @@ const pq7 = 'How do you accomodate different student needs and world views?'
 const pq8 = 'How will you mitigate any potential repercussions that the assessment method may have?'
 
 const OATenthPage = props => {
+  const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+  const text = {"font-size": "15px", "font-weight": "225"}
   const { handleSubmit, previousPage, formValues, savePage } = props
 
   let methods = []
@@ -33,12 +35,12 @@ const OATenthPage = props => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={formSheet}>
       <div>
         <h3>Planning Questions</h3>
       </div>
-      <div>{reminder}</div>
-      <div>{chose}{methods}</div>
+      <div style={text}>{reminder}</div>
+      <div style={text}>{chose}{methods}</div>
       <div>
         <div><label>{pq1}</label></div>
         <div>

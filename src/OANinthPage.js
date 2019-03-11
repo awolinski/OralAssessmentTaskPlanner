@@ -109,10 +109,12 @@ class OANinthPage extends Component {
   }
 
   render () {
+    const formSheet = {"font-size": "15px", "position": "absolute", "top": "3%", "left": "5%", "right": "5%", "font-weight": "200"}
+    const warningStyle = {"color": "red"}
     const { handleSubmit, previousPage, formValues, savePage } = this.props
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={formSheet}>
       <div>
         <h3>Recommendations</h3>
       </div>
@@ -162,7 +164,7 @@ class OANinthPage extends Component {
             </td>
           </tr>
           <tr>
-            <td>Group Work (discussions)</td>
+            <td>Group Work / Discussions</td>
             <td>eg Moderately</td>
             <td>eg They are used at your institution</td>
             <td>eg </td>
@@ -254,7 +256,7 @@ class OANinthPage extends Component {
         </tbody>
       </table>
       <div>
-        <h3>{this.state.warning}</h3>
+        <div style={warningStyle}>{this.state.warning}</div>
       </div>
       <div>
         <h3>Additional Recommendations</h3>

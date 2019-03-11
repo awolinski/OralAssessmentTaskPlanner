@@ -27,10 +27,11 @@ class OAFifthPage extends Component {
 
   render () {
     const { handleSubmit, previousPage, savePage } = this.props
+    const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
 
     return (
-      <form onSubmit={handleSubmit}>
-      <div>
+      <form onSubmit={handleSubmit} style={formSheet}>
+      <div><br/><br/>
         <h3>Classroom Practices</h3>
       </div>
       <div>
@@ -72,7 +73,9 @@ class OAFifthPage extends Component {
           <Field name="q34" component={renderError} />
         </div>
       </div>
-      <div><h3>Instructional Practices</h3></div>
+      <div><br/><br/>
+        <h3>Instructional Practices</h3>
+      </div>
       <div>
         <div><label>{q35}</label></div>
         <div>

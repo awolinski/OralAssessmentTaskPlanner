@@ -59,11 +59,13 @@ class OASixthPage extends Component {
     const style43 = this.state.hide43 ? {display: 'none'} : {};
     const style44 = this.state.hide44 ? {display: 'none'} : {};
     const style45 = this.state.hide45 ? {display: 'none'} : {};
+    const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+
     const { handleSubmit, previousPage, savePage } = this.props
 
     return (
-      <form onSubmit={handleSubmit}>
-      <div>
+      <form onSubmit={handleSubmit} style={formSheet}>
+      <div><br/><br/>
         <h3>Assessment Environment</h3>
       </div>
       <div>

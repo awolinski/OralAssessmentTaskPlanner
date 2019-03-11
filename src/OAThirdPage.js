@@ -32,10 +32,11 @@ class OAThirdPage extends Component {
   render () {
     const style = this.state.hide ? {display: 'none'} : {};
     const { handleSubmit, previousPage, savePage } = this.props
+    const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
 
     return (
-      <form onSubmit={handleSubmit}>
-      <div>
+      <form onSubmit={handleSubmit} style={formSheet}>
+      <div><br/><br/>
         <h3>Institution Questions</h3>
       </div>
       <div>
