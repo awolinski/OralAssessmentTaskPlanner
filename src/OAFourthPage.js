@@ -57,12 +57,14 @@ class OAFourthPage extends Component {
     const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
     const style16 = this.state.hide16 ? {display: 'none'} : {};
     const style17 = this.state.hide17 ? {display: 'none'} : {};
+    const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
+
     const { handleSubmit, previousPage, savePage } = this.props
 
     return (
       <form onSubmit={handleSubmit} style={formSheet}>
       <div><br/><br/>
-        <h3>Institutional Assessment Practices</h3>
+        <div style={heading}>Institutional Assessment Practices</div>
       </div>
       <div>
         <div><label>{q12}</label></div>
@@ -104,15 +106,13 @@ class OAFourthPage extends Component {
         </div>
       </div>
       <div><br/><br/>
-        <h3>Purpose of the Assessment</h3>
+        <div style={heading}>Purpose of the Assessment</div>
       </div>
       <div>
         <div><label>{q15}</label></div>
         <div>
           <label><Field name="q15" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q15" component="input" type="radio" value="No" /> No</label>
-        </div>
-        <div>
           <Field name="q15" component={renderError} />
         </div>
       </div>
@@ -121,8 +121,6 @@ class OAFourthPage extends Component {
         <div>
           <label><Field name="q16a" component="input" type="radio" value="Yes" onChange={this.showFields} /> Yes</label>
           <label><Field name="q16a" component="input" type="radio" value="No" onChange={this.hideFields}/> No</label>
-        </div>
-        <div>
           <Field name="q16a" component={renderError} />
         </div>
       </div>
@@ -139,8 +137,6 @@ class OAFourthPage extends Component {
         <div>
           <label><Field name="q17a" component="input" type="radio" value="Yes" onChange={this.showFields} /> Yes</label>
           <label><Field name="q17a" component="input" type="radio" value="No" onChange={this.hideFields}/> No</label>
-        </div>
-        <div>
           <Field name="q17a" component={renderError} />
         </div>
       </div>
@@ -157,13 +153,11 @@ class OAFourthPage extends Component {
         <div>
           <label><Field name="q18" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q18" component="input" type="radio" value="No" /> No</label>
-        </div>
-        <div>
           <Field name="q18" component={renderError} />
         </div>
       </div>
       <div><br/><br/>
-        <h3>Importance of Oral Communication Tasks</h3>
+        <div style={heading}>Importance of Communication Tasks</div>
       </div>
       <div>
         <div><label>{q19}</label></div>
@@ -257,7 +251,7 @@ class OAFourthPage extends Component {
         </div>
       </div>
       <div><br/><br/>
-        <h3>Use of Oral Communication Tasks</h3>
+        <div style={heading}>Use of Oral Communication Tasks</div>
       </div>
       <div>
         <div><label>{q26}</label></div>

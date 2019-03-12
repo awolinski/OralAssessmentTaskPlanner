@@ -28,11 +28,12 @@ class OAFifthPage extends Component {
   render () {
     const { handleSubmit, previousPage, savePage } = this.props
     const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+    const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
 
     return (
       <form onSubmit={handleSubmit} style={formSheet}>
       <div><br/><br/>
-        <h3>Classroom Practices</h3>
+        <div style={heading}>Classroom Practices</div>
       </div>
       <div>
         <div><label>{q32}</label></div>
@@ -74,7 +75,7 @@ class OAFifthPage extends Component {
         </div>
       </div>
       <div><br/><br/>
-        <h3>Instructional Practices</h3>
+        <div style={heading}>Instructional Practices</div>
       </div>
       <div>
         <div><label>{q35}</label></div>
@@ -121,8 +122,6 @@ class OAFifthPage extends Component {
           <label><Field name="q38" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q38" component="input" type="radio" value="No" /> No</label>
           <label><Field name="q38" component="input" type="radio" value="Maybe" /> Maybe</label>
-        </div>
-        <div>
           <Field name="q38" component={renderError} />
         </div>
       </div>
@@ -144,8 +143,6 @@ class OAFifthPage extends Component {
         <div>
           <label><Field name="q40" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q40" component="input" type="radio" value="No" /> No</label>
-        </div>
-        <div>
           <Field name="q40" component={renderError} />
         </div>
       </div>

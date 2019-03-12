@@ -65,21 +65,20 @@ class OAEighthPage extends Component {
     const style62 = this.state.hide62 ? {display: 'none'} : {};
     const style51e = this.state.hide51e ? {display: 'none'} : {};
     const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+    const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
 
     const { handleSubmit, previousPage, savePage } = this.props
 
     return (
       <form onSubmit={handleSubmit} style={formSheet}>
       <div><br/><br/>
-        <h3>Student Preparation</h3>
+        <div style={heading}>Student Preparation</div>
       </div>
       <div>
         <div><label>{q56}</label></div>
         <div>
           <label><Field name="q56" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q56" component="input" type="radio" value="No" /> No</label>
-        </div>
-        <div>
           <Field name="q56" component={renderError} />
         </div>
       </div>
@@ -88,8 +87,6 @@ class OAEighthPage extends Component {
         <div>
           <label><Field name="q57" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q57" component="input" type="radio" value="No" /> No</label>
-        </div>
-        <div>
           <Field name="q57" component={renderError} />
         </div>
       </div>
@@ -99,8 +96,6 @@ class OAEighthPage extends Component {
           <label><Field name="q58" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q58" component="input" type="radio" value="No" /> No</label>
           <label><Field name="q58" component="input" type="radio" value="Don't know" /> Don't know</label>
-        </div>
-        <div>
           <Field name="q58" component={renderError} />
         </div>
       </div>
@@ -110,8 +105,6 @@ class OAEighthPage extends Component {
           <label><Field name="q59" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q59" component="input" type="radio" value="No" /> No</label>
           <label><Field name="q59" component="input" type="radio" value="Don't know" /> Don't know</label>
-        </div>
-        <div>
           <Field name="q59" component={renderError} />
         </div>
       </div>
@@ -121,8 +114,6 @@ class OAEighthPage extends Component {
           <label><Field name="q60a" component="input" type="radio" value="Yes" onChange={this.showFields}/> Yes</label>
           <label><Field name="q60a" component="input" type="radio" value="No" onChange={this.hideFields}/> No</label>
           <label><Field name="q60a" component="input" type="radio" value="Don't know" onChange={this.showFields}/> Don't know</label>
-        </div>
-        <div>
           <Field name="q60a" component={renderError} />
         </div>
       </div>
@@ -140,8 +131,6 @@ class OAEighthPage extends Component {
           <label><Field name="q61a" component="input" type="radio" value="Yes" onChange={this.showFields}/> Yes</label>
           <label><Field name="q61a" component="input" type="radio" value="No" onChange={this.hideFields}/> No</label>
           <label><Field name="q61a" component="input" type="radio" value="Don't know" onChange={this.showFields}/> Don't know</label>
-        </div>
-        <div>
           <Field name="q61a" component={renderError} />
         </div>
       </div>
@@ -159,8 +148,6 @@ class OAEighthPage extends Component {
           <label><Field name="q62a" component="input" type="radio" value="Yes" onChange={this.showFields}/> Yes</label>
           <label><Field name="q62a" component="input" type="radio" value="No" onChange={this.hideFields}/> No</label>
           <label><Field name="q62a" component="input" type="radio" value="Don't know" onChange={this.showFields}/> Don't know</label>
-        </div>
-        <div>
           <Field name="q62a" component={renderError} />
         </div>
       </div>
@@ -177,8 +164,6 @@ class OAEighthPage extends Component {
         <div>
           <label><Field name="q63" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q63" component="input" type="radio" value="No" /> No</label>
-        </div>
-        <div>
           <Field name="q63" component={renderError} />
         </div>
       </div>
@@ -187,8 +172,6 @@ class OAEighthPage extends Component {
         <div>
           <label><Field name="q64" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q64" component="input" type="radio" value="No" /> No</label>
-        </div>
-        <div>
           <Field name="q64" component={renderError} />
         </div>
       </div>
@@ -197,13 +180,11 @@ class OAEighthPage extends Component {
         <div>
           <label><Field name="q65" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q65" component="input" type="radio" value="No" /> No</label>
-        </div>
-        <div>
           <Field name="q65" component={renderError} />
         </div>
       </div>
       <div><br/><br/>
-        <h3>Student Inclusion</h3>
+        <div style={heading}>Student Inclusion</div>
       </div>
       <div>
         <div><label>{q66}</label></div>
@@ -211,8 +192,6 @@ class OAEighthPage extends Component {
           <label><Field name="q66" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q66" component="input" type="radio" value="No" /> No</label>
           <label><Field name="q66" component="input" type="radio" value="Maybe" /> Maybe</label>
-        </div>
-        <div>
           <Field name="q66" component={renderError} />
         </div>
       </div>
@@ -222,8 +201,6 @@ class OAEighthPage extends Component {
           <label><Field name="q67" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q67" component="input" type="radio" value="No" /> No</label>
           <label><Field name="q67" component="input" type="radio" value="Don't know" /> Don't know</label>
-        </div>
-        <div>
           <Field name="q67" component={renderError} />
         </div>
       </div>
@@ -233,8 +210,6 @@ class OAEighthPage extends Component {
           <label><Field name="q68" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q68" component="input" type="radio" value="No" /> No</label>
           <label><Field name="q68" component="input" type="radio" value="Maybe" /> Maybe</label>
-        </div>
-        <div>
           <Field name="q68" component={renderError} />
         </div>
       </div>
@@ -244,8 +219,6 @@ class OAEighthPage extends Component {
           <label><Field name="q69" component="input" type="radio" value="Yes" /> Yes</label>
           <label><Field name="q69" component="input" type="radio" value="No" /> No</label>
           <label><Field name="q69" component="input" type="radio" value="Don't know" /> Don't know</label>
-        </div>
-        <div>
           <Field name="q69" component={renderError} />
         </div>
       </div>

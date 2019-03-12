@@ -47,6 +47,9 @@ class OAForm extends Component {
 
     return (
       <div>
+      <div>
+        <span>Page {this.state.page} of 10</span>
+      </div>
         {page === 1 && <OAFirstPage onSubmit={this.nextPage}/>}
         {page === 2 && (
           <OASecondPage

@@ -15,6 +15,8 @@ const pq8 = 'How will you mitigate any potential repercussions that the assessme
 const OATenthPage = props => {
   const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
   const text = {"font-size": "15px", "font-weight": "225"}
+  const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
+
   const { handleSubmit, previousPage, formValues, savePage } = props
 
   let methods = []
@@ -37,7 +39,7 @@ const OATenthPage = props => {
   return (
     <form onSubmit={handleSubmit} style={formSheet}>
       <div>
-        <h3>Planning Questions</h3>
+        <div style={heading}>Planning Questions</div>
       </div>
       <div style={text}>{reminder}</div>
       <div style={text}>{chose}{methods}</div>
@@ -98,7 +100,7 @@ const OATenthPage = props => {
         </div>
       </div>
     <div>
-        <h3>Goodluck with your class!</h3>
+        <div style={heading}>Goodluck with your class!</div>
       </div>
       <div>
         <button type="button" className="previous" onClick={previousPage}>

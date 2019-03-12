@@ -24,11 +24,12 @@ class OASecondPage extends Component {
   render () {
     const { handleSubmit, previousPage, savePage } = this.props
     const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+    const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
 
     return (
       <form onSubmit={handleSubmit} style={formSheet}>
         <div><br/><br/>
-          <h3>Logistics</h3>
+          <div style={heading}>Logistics</div>
         </div>
         <div>
           <div><label>{q1}</label></div>
@@ -92,7 +93,7 @@ class OASecondPage extends Component {
         </div>
         <div>
         <br/><br/>
-          <h3>Background Information</h3>
+          <div style={heading}>Background Information</div>
         </div>
         <div>
           <div><label>{q5}</label></div>
@@ -122,8 +123,6 @@ class OASecondPage extends Component {
             <label><Field name="q7" component="input" type="radio" value="Yes"/> Yes</label>
             <label><Field name="q7" component="input" type="radio" value="No"/> No</label>
             <label><Field name="q7" component="input" type="radio" value="Don't Know"/> Don't know</label>
-          </div>
-          <div>
             <Field name="q7" component={renderError} />
           </div>
         </div>
