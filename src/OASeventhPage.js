@@ -345,5 +345,5 @@ export default reduxForm({
   form: 'OA',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  //validate
+  validate
 })(OASeventhPage)

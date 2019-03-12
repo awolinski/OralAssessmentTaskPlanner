@@ -211,8 +211,8 @@ const validate = values => {
 }
 
 export default reduxForm({
-  form: 'OA', //Form name is same
+  form: 'OA',
   destroyOnUnmount: false,
-  forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-  //validate
+  forceUnregisterOnUnmount: true,
+  validate
 })(OAFifthPage)

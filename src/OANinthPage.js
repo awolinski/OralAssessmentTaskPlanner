@@ -9,10 +9,26 @@ const proficiency1d = 'At a minimum students at this level have fully operationa
 
 const toolsPart1 = 'You should provide some time for students to familarize themselves with the tools that are available in the classroom (e.g. the '
 const toolsPart2 = ') if you plan on letting students use them.'
+const addRec2 = 'You should explain your expectations for each of your assessment methods since many of your students may be unfamiliar with your discipline\'s practices.'
 
 const warningText = 'Text eg: Since you have so few language learners…'
 
-const oralFactorsUsed = 'They are used at your institution'
+const oralFactors1 = 'They are used at your institution.'
+const portfolioFactors1 = 'You are already recording their performances.'
+const simulationFactors1 = 'These allow students to demonstrate specific skills.'
+const simulationFactors2 = 'These allow students to demonstrate specific knowledge.'
+
+const interviewAddRec1 = 'Provide additonal time. Teach them how to ask for and provide clarification. Speak slowly.'
+const oralAddRec1 = 'Have proficient speakers go first to provide an example. Allow extra time for questions. Ensure questions are understood. Move on when they aren\'t.'
+const groupAddRec1 = 'Provide a model of group work or discussions. Allow the use of support tools (e.g. translators).'
+const presentationAddRec1 = 'Avoid using hard cut-off times. Provide students with a model presentation.'
+const demoAddRec1 = 'Avoid using hard cut-off times. Provide students with a model presentation.'
+const participationAddRec1 = 'Encourage the sharing of different viewpoints. Change the seating arrangement/groups often.'
+const simulationAddRec1 = 'Provide a model role play. Encourage the sharing of different viewpoints. Change the seating arrangement/groups often.'
+const portfolioAddRec1 = 'Make sure that they understand the importance of all tasks.'
+
+const presentationImp1 = 'You may want to incorportate more of these into your everyday class activities.'
+const demoImp1 = 'You may want to use more demonstrations in class.'
 
 class OANinthPage extends Component {
   constructor(props) {
@@ -52,10 +68,10 @@ class OANinthPage extends Component {
       simulationFactors: '',
       simulationImp: '',
       simulationAddRec: '',
-      portfolioRec: '',
+      portfolioRec: 'Not',
       portfolioFactors: '',
       portfolioImp: '',
-      portfolioAddRec: true,
+      portfolioAddRec: portfolioAddRec1,
     };
 
   this.showWarningMessage = this.showWarningMessage.bind(this)
@@ -64,6 +80,8 @@ class OANinthPage extends Component {
   this.additionalRecommendations = this.additionalRecommendations.bind(this)
   this.oralExamCalculations = this.oralExamCalculations.bind(this)
   this.interviewCalculations = this.interviewCalculations.bind(this)
+  this.portfolioCalculations = this.portfolioCalculations.bind(this)
+  this.simulationCalculations = this.simulationCalculations.bind(this)
 }
 
   componentDidMount() {
@@ -74,11 +92,13 @@ class OANinthPage extends Component {
       showTOEIC: formValues.q9c > 0 ? ` TOEIC - ${formValues.q9c}` : '',
     })
     this.proficiencyCalculationsDescriptions(formValues)
-    //this.proficiencyCalculationsAdditional(formValues)
+    this.proficiencyCalculationsAdditional(formValues)
     this.additionalRecommendations(formValues)
     this.showWarningMessage(formValues)
     this.oralExamCalculations(formValues)
     this.interviewCalculations(formValues)
+    this.portfolioCalculations(formValues)
+    this.simulationCalculations(formValues)
   }
 
   additionalRecommendations(formValues) {
@@ -91,7 +111,7 @@ class OANinthPage extends Component {
 
   oralExamCalculations(formValues) {
     if (formValues.q12 === 'Often' || formValues.q12 === 'Very often' || formValues.q12 === 'Always') {
-      this.setState({ oralFactors: oralFactorsUsed })
+      this.setState({ oralFactors: oralFactors1 })
     }
   }
 
@@ -99,21 +119,27 @@ class OANinthPage extends Component {
 
   }
 
+  portfolioCalculations(formValues) {
+    if (formValues.q42a === 'Yes' || formValues.q42a === 'Maybe') {
+      this.setState({ portfolioFactors: portfolioFactors1 })
+    }
+  }
+
   proficiencyCalculationsAdditional(formValues) {
     if (formValues.q9b < 5.5 || formValues.q9a < 46 || formValues.q9c < 130){
-      //this.setState({ portfolioAddRec })
+      this.setState({ portfolioAddRec: portfolioAddRec1 })
     } 
     if (formValues.q9b < 6.0 || formValues.q9a < 75 || formValues.q9c < 150){
-      //this.setState({ demoAddRec })
+      this.setState({ demoAddRec: demoAddRec1 })
     } 
     if (formValues.q9b < 6.5 || formValues.q9a < 85 || formValues.q9c < 160) {
-      //this.setState({ interviewAddRec })
+      this.setState({ interviewAddRec: interviewAddRec1 })
     } 
     if (formValues.q9b < 7.0 || formValues.q9a < 100 || formValues.q9c < 160){
-      //this.setState({ groupAddRec, participationAddRec, oralAddRec})
+      this.setState({ groupAddRec: groupAddRec1, participationAddRec: participationAddRec1, oralAddRec: oralAddRec1})
     } 
     if (formValues.q9b < 7.5 || formValues.q9a < 107 || formValues.q9c < 180) {
-      //this.setState({ simulationAddRec })
+      this.setState({ simulationAddRec: simulationAddRec1 })
     } 
   }
 
@@ -127,6 +153,16 @@ class OANinthPage extends Component {
     } else {
       this.setState({ proficiencyDescription: proficiency1d })
     }
+  }
+
+  simulationCalculations(formValues) {
+    if (formValues.q16a && formValues.q17a) {
+      this.setState({ simulationRec: 'Highly', simulationFactors: `${simulationFactors1} ${simulationFactors2}` })
+    } else if (formValues.q16a ) {
+      this.setState({ simulationRec: 'Highly', simulationFactors: simulationFactors1 })
+    }  else if (formValues.q17a ) {
+      this.setState({ simulationRec: 'Highly', simulationFactors: simulationFactors2 })
+    } 
   }
 
   showWarningMessage(formValues) {

@@ -422,5 +422,5 @@ export default reduxForm({
   form: 'OA', //Form name is same
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-  //validate
+  validate
 })(OAFourthPage)

@@ -28,7 +28,7 @@ const OAFirstPage = props => {
         </button>
       </div>
       <div style={icon}>
-        <a href="mailto:?Subject=Oral%20Assessment%20Task%20Planner&amp;Body=https://github.com/awolinski/OralAssessmentTaskPlanner">
+        <a href="mailto:?Subject=Oral%20Assessment%20Task%20Planner&amp;Body=https://awolinski.github.io/OralAssessmentTaskPlanner/">
           <img src="https://cdn3.iconfinder.com/data/icons/social-media-circle-flat-1/1024/mail-01-01-512.png" height="50px" width="50px" alt="Email" />
         </a></div>
         <div style={share}>Share</div>
