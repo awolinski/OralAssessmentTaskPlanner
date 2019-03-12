@@ -1,10 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-// TODO: Change font, center title and text, update description with time to complete
-// application and how to use it, fix background image to adjust size with screen
-// size adjustment
-
 const background = {"opacity": "0.5", "position": "absolute", "width": "100%", "height": "100%", "top": "0", "left": "0" }
 const title1 = {"font-size": "40px", "position": "absolute", "top": "15%", "left": "8%", "z-index": "2", "font-weight": "200"}
 const title2 = {"font-size": "70px", "position": "absolute", "top": "29%", "left": "18%", "z-index": "2", "font-weight": "300"}

@@ -14,6 +14,8 @@ Designed for undergraduate English-speaking instructors, this application helps 
 ## Hosted at:
 https://awolinski.github.io/OralAssessmentTaskPlanner/
 
+Build is currently running old version of application currently troubleshooting!
+
 ## To run locally
 
 ```
