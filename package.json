@@ -1,4 +1,5 @@
-{
+{ "repository": "git@github.com:awolinski/OralAssessmentTaskPlanner.git",
+  "homepage": ".",
   "private": true,
   "scripts": {
     "clean": "rimraf dist",

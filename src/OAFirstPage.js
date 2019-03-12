@@ -13,7 +13,7 @@ const info = {"font-size": "15px", "position": "absolute", "z-index": "2", "top"
 const icon = {"position": "fixed", "bottom": "7%", "left": "3.5%"}
 const share = {"position": "fixed", "bottom": "4%", "left": "4%", "font-weight": "300"}
 
-const programInfo = "This adaptive tool was designed for undergraduate instructors of courses where English is the language of instruction. It can be used to plan classroom activities and assessments that are fair to all students regardless of students’ background and language abilities. Further information about the tool can be found at: https://link.springer.com/article/10.1007%2Fs11423-015-9375-8."
+const programInfo = "Designed for undergraduate English-speaking instructors, this application helps teachers plan oral assessments and activities best suited for their course, given the language abilities of their students, and the classroom environment. The application takes approximately fifteen minutes to complete, and there is an option to save each page throughout the process. A final recommendation summary is provided on page nine. Further information about the tool can be found at: https://link.springer.com/article/10.1007%2Fs11423-015-9375-8."
 
 const OAFirstPage = props => {
   const { handleSubmit } = props
