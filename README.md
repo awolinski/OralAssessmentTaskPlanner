@@ -6,14 +6,13 @@ Designed for undergraduate English-speaking instructors, this application helps 
 
 ## TODO: 
     - Embed video/links to help define language levels that show upon button click page 2
-    - Bug fixes such as validation error on page 6/7
+    - Bug fixes such as validation bugs
     - Write unit tests
     - Comment code
 
 ## Hosted at:
 https://awolinski.github.io/OralAssessmentTaskPlanner/
 
-Build is currently running old version of application currently troubleshooting!
 
 ## To run locally
 

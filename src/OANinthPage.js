@@ -199,11 +199,11 @@ class OANinthPage extends Component {
   }
 
   simulationCalculations(formValues) {
-    if (formValues.q16a && formValues.q17a) {
+    if (formValues.q16a === 'Yes' && formValues.q17a === 'Yes') {
       this.setState({ simulationRec: 'Highly', simulationFactors: `${simulationFactors1} ${simulationFactors2}` })
-    } else if (formValues.q16a ) {
+    } else if (formValues.q16a === 'Yes') {
       this.setState({ simulationRec: 'Highly', simulationFactors: simulationFactors1 })
-    }  else if (formValues.q17a ) {
+    }  else if (formValues.q17a === 'Yes') {
       this.setState({ simulationRec: 'Highly', simulationFactors: simulationFactors2 })
     } 
   }
