@@ -29,7 +29,6 @@ class OAEighthPage extends Component {
       hide60: true,
       hide61: true,
       hide62: true,
-      hide51e: true,
     };
   this.showFields = this.showFields.bind(this)
   this.hideFields = this.hideFields.bind(this)
@@ -40,10 +39,8 @@ class OAEighthPage extends Component {
       this.setState({ hide60: false })
     } else if (values.target.name === 'q61a') {
       this.setState({ hide61: false })
-    } else if (values.target.name === 'q2a') {
+    } else if (values.target.name === 'q62a') {
       this.setState({ hide62: false })
-    } else if (values.target.name === 'q51e') {
-      this.setState({ hide51e: false })
     }
   }
   
@@ -54,8 +51,6 @@ class OAEighthPage extends Component {
       this.setState({ hide61: true })
     } else if (values.target.name === 'q62a') {
       this.setState({ hide62: true })
-    } else if (values.target.name === 'q51e') {
-      this.setState({ hide51e: true })
     }
   }
 
@@ -63,7 +58,6 @@ class OAEighthPage extends Component {
     const style60 = this.state.hide60 ? {display: 'none'} : {};
     const style61 = this.state.hide61 ? {display: 'none'} : {};
     const style62 = this.state.hide62 ? {display: 'none'} : {};
-    const style51e = this.state.hide51e ? {display: 'none'} : {};
     const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
     const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
 
@@ -282,13 +276,13 @@ const validate = values => {
   if (!values.q69) {
     errors.q69 = 'Required'
   }
-  if (values.q60a !== 'No' && !values.q60b) {
+  if (values.q60a === 'Yes' && !values.q60b) {
     errors.q60b = 'Required'
   }
-  if (values.q61a !== 'No' && !values.q61b) {
+  if (values.q61a === 'Yes' && !values.q61b) {
     errors.q61b = 'Required'
   }
-  if (values.q62a !== 'No' && !values.q62b) {
+  if (values.q62a === 'Yes' && !values.q62b) {
     errors.q62b = 'Required'
   }
 

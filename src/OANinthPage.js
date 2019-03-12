@@ -7,17 +7,36 @@ const proficiency1b = 'Students at this level have a generally effective command
 const proficiency1c = 'Students at this level have operational command of the language, though with occasional inaccuracies, inappropriacies and misunderstandings in some situations. They generally handle complex language well and understand detailed reasoning.'
 const proficiency1d = 'At a minimum students at this level have fully operational command of the language with only occasional unsystematic inaccuracies and inappropriacies. Misunderstandings may occur in unfamiliar situations. They handles complex detailed argumentation well.'
 
+// Constants that show in Additional Recommendations outside of the table
 const toolsPart1 = 'You should provide some time for students to familarize themselves with the tools that are available in the classroom (e.g. the '
 const toolsPart2 = ') if you plan on letting students use them.'
 const addRec2 = 'You should explain your expectations for each of your assessment methods since many of your students may be unfamiliar with your discipline\'s practices.'
+const addRec3 = 'It\'s great that you are using established criteria.'
+const addRec4 = 'It\'s great that your criteria measure different aspects and levels of student performance.'
+const addRec5 = 'You may want to give more attention to your criteria in order to ensure that they fairly and adequately distinguish different aspects and levels of student performance.'
 
+// Red Warning after table
 const warningText = 'Text eg: Since you have so few language learners…'
 
-const oralFactors1 = 'They are used at your institution.'
+// Constants that show up in factors row
 const portfolioFactors1 = 'You are already recording their performances.'
 const simulationFactors1 = 'These allow students to demonstrate specific skills.'
 const simulationFactors2 = 'These allow students to demonstrate specific knowledge.'
+const demoFactors1 = 'Your students need to be able to explain things to others.'
+const usedFactors = 'They are used at your institution.'
+const presentationFactors1 = 'It\'s important for your students to be able to do this.'
+const particAndGroupFactors1 = 'This will help students develop their much needed negotiation or debate skills.'
+const oralFactors1 = 'This will help develop their ability to respond to questions and comments.'
+const interviewFactors1 = 'This is a lower-pressure way of helping your students dvelop their ability to respond to questions and comments.'
+const groupFactors1 = 'This can help build their negotiation skills for the workplace.'
+const oralFactors2 = 'This can help build their debating skills for the workplace.'
+const participationFactors1 = 'This can help them learn to participate in group settings in the workplace.'
+const demoFactors2 = 'This can help their ability to demonstrate tasks or products for the workplace.'
+const demoFactors3 = 'You use them in your classroom activities.'
+const presentationFactors2 = 'You use them in your classroom.'
+const participationFactors2 = 'This will help prepare them for interactive assessments.'
 
+// Constants that show up in Additional Recommendations row
 const interviewAddRec1 = 'Provide additonal time. Teach them how to ask for and provide clarification. Speak slowly.'
 const oralAddRec1 = 'Have proficient speakers go first to provide an example. Allow extra time for questions. Ensure questions are understood. Move on when they aren\'t.'
 const groupAddRec1 = 'Provide a model of group work or discussions. Allow the use of support tools (e.g. translators).'
@@ -26,9 +45,15 @@ const demoAddRec1 = 'Avoid using hard cut-off times. Provide students with a mod
 const participationAddRec1 = 'Encourage the sharing of different viewpoints. Change the seating arrangement/groups often.'
 const simulationAddRec1 = 'Provide a model role play. Encourage the sharing of different viewpoints. Change the seating arrangement/groups often.'
 const portfolioAddRec1 = 'Make sure that they understand the importance of all tasks.'
+const groupFactors2 = 'You use this in your class.'
+const portfolioFactors2 = 'You are already using multiple assessment methods.'
 
+// Constants that show up in Imrovements row
 const presentationImp1 = 'You may want to incorportate more of these into your everyday class activities.'
 const demoImp1 = 'You may want to use more demonstrations in class.'
+const portfolioImp1 = 'Your students\' performance may be hindered if they are being recorded because of their low English proficiency.'
+const groupImp1 = 'You may want to incorporate more of it into your class.'
+const simulationImp1 = 'Using these in class will help prepare them for other interactive assessments.'
 
 class OANinthPage extends Component {
   constructor(props) {
@@ -80,7 +105,9 @@ class OANinthPage extends Component {
   this.additionalRecommendations = this.additionalRecommendations.bind(this)
   this.oralExamCalculations = this.oralExamCalculations.bind(this)
   this.interviewCalculations = this.interviewCalculations.bind(this)
+  this.groupCalculations = this.groupCalculations.bind(this)
   this.portfolioCalculations = this.portfolioCalculations.bind(this)
+  this.presentationCalculations = this.presentationCalculations.bind(this)
   this.simulationCalculations = this.simulationCalculations.bind(this)
 }
 
@@ -97,7 +124,9 @@ class OANinthPage extends Component {
     this.showWarningMessage(formValues)
     this.oralExamCalculations(formValues)
     this.interviewCalculations(formValues)
+    this.groupCalculations(formValues)
     this.portfolioCalculations(formValues)
+    this.presentationCalculations(formValues)
     this.simulationCalculations(formValues)
   }
 
@@ -111,12 +140,26 @@ class OANinthPage extends Component {
 
   oralExamCalculations(formValues) {
     if (formValues.q12 === 'Often' || formValues.q12 === 'Very often' || formValues.q12 === 'Always') {
-      this.setState({ oralFactors: oralFactors1 })
+      this.setState({ oralFactors: usedFactors })
     }
   }
 
   interviewCalculations(formValues) {
+    if (formValues.q13 === 'Often' || formValues.q13 === 'Very often' || formValues.q13 === 'Always') {
+      this.setState({ interviewFactors: usedFactors })
+    }
+  }
 
+  groupCalculations(formValues) {
+    if (formValues.q2 < 8) { //Need actual values
+      this.setState({ groupFactors: particAndGroupFactors1 })
+    }
+  }
+
+  presentationCalculations(formValues) {
+    if (formValues.q14 === 'Often' || formValues.q14 === 'Very often' || formValues.q14 === 'Always') {
+      this.setState({ presentationFactors: usedFactors })
+    }
   }
 
   portfolioCalculations(formValues) {
@@ -127,7 +170,7 @@ class OANinthPage extends Component {
 
   proficiencyCalculationsAdditional(formValues) {
     if (formValues.q9b < 5.5 || formValues.q9a < 46 || formValues.q9c < 130){
-      this.setState({ portfolioAddRec: portfolioAddRec1 })
+      this.setState({ presentationAddRec: presentationAddRec1 })
     } 
     if (formValues.q9b < 6.0 || formValues.q9a < 75 || formValues.q9c < 150){
       this.setState({ demoAddRec: demoAddRec1 })
@@ -145,7 +188,7 @@ class OANinthPage extends Component {
 
   proficiencyCalculationsDescriptions(formValues) {
     if (formValues.q9b < 5.5 || formValues.q9a < 46 || formValues.q9c < 130){
-      this.setState({ proficiencyDescription: proficiency1a })
+      this.setState({ proficiencyDescription: proficiency1a, portfolioImp: portfolioImp1 })
     } else if (formValues.q9b < 6.5 || formValues.q9a < 85 || formValues.q9c < 160) {
       this.setState({ proficiencyDescription: proficiency1b })
     } else if (formValues.q9b < 7.5 || formValues.q9a < 107 || formValues.q9c < 180) {
