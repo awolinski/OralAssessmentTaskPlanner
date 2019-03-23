@@ -25,6 +25,7 @@ let render = () => {
   const OAEigthPage = require('!!raw-loader!./OAEighthPage')
   const OANinthPage = require('!!raw-loader!./OANinthPage')
   const OATenthPage = require('!!raw-loader!./OATenthPage')
+  const OAPrintPage = require('!!raw-loader!./OAPrintPage')
   ReactDOM.hydrate(
     <Provider store={store}>
       <OAForm />

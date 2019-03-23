@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import OAFirstPage from './OAFirstPage'
 import OASecondPage from './OASecondPage'
 import OAThirdPage from './OAThirdPage'
@@ -10,6 +9,7 @@ import OASeventhPage from './OASeventhPage'
 import OAEighthPage from './OAEighthPage'
 import OANinthPage from './OANinthPage'
 import OATenthPage from './OATenthPage'
+import OAPrintPage from './OAPrintPage'
 
 class OAForm extends Component {
   constructor(props) {
@@ -116,13 +116,17 @@ class OAForm extends Component {
             savePage={this.savePage}
         />
         )}
+        {page === 11 && (
+          <OAPrintPage
+            formValues={this.state.formValues}
+            previousPage={this.previousPage}
+            onSubmit={this.returnToWelcomePage}
+            savePage={this.savePage}
+        />
+        )}
       </div>
     )
   }
-}
-
-OAForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired
 }
 
 export default OAForm
