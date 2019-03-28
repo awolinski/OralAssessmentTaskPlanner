@@ -9,20 +9,19 @@ const proficiency1d = 'At a minimum students at this level have fully operationa
 
 // Constants that show in Additional Recommendations outside of the table
 const toolsPart1 = 'You should provide some time for students to familarize themselves with the tools that are available in the classroom (e.g. the '
-const toolsPart2 = ') if you plan on letting students use them.'
-const addRec2 = 'You should explain your expectations for each of your assessment methods since many of your students may be unfamiliar with your discipline\'s practices.'
-const addRec3 = 'It\'s great that you are using established criteria.'
-const addRec4 = 'It\'s great that your criteria measure different aspects and levels of student performance.'
-const addRec5 = 'You may want to give more attention to your criteria in order to ensure that they fairly and adequately distinguish different aspects and levels of student performance.'
-//const addRec6 = 'You may want to consider recording your students\' performances and giving them a copy so that they have evidence of their abilities to communicate orally.'
-//const addRec8 = 'Your students may benefit from your providing more detailed descriptions of your expectations and how they relate to your assessment practices.'
-//const addRec9 = 'You may want to consider reducing your use of local vocabulary, cultural references, or metaphors unless you plan to take the time to explain them to your students.'
-//const addRec10 = 'You may want to incorporate a tool like the Corpus of Contemporary American English. This can help students understand culturally specific vocabulary and phrases.'
-//const addRec11 = 'Based on what you have reported, you may want to work towards being more inclusive of students with different backgrounds and opinions.'
-//const addRec12 = 'Remember to teach your students the skills that they need to perform your chosen assessment tasks.'
-//const addRec13 = 'You should notify students that they will be recorded when the assessment criteria are communicated.'
-//const addRec7 = 'You may want to be more flexible in your time limits to ensure that students have the opportunity to clarify misunderstandings and respond appropriately.'
-//const addRec14 = 'You should consider how you plan to resolve the differences in the scores that are assigned by different graders.'
+const toolsPart2 = ') if you plan on letting students use them.\n'
+const addRec2 = 'You should explain your expectations for each of your assessment methods since many of your students may be unfamiliar with your discipline\'s practices.\n'
+const addRec3 = 'It\'s great that you are using established criteria.\n'
+const addRec4 = 'It\'s great that your criteria measure different aspects and levels of student performance.\n'
+const addRec5 = 'You may want to give more attention to your criteria in order to ensure that they fairly and adequately distinguish different aspects and levels of student performance.\n'
+const addRec6 = 'You may want to consider recording your students\' performances and giving them a copy so that they have evidence of their abilities to communicate orally.\n'
+const addRec8 = 'Your students may benefit from your providing more detailed descriptions of your expectations and how they relate to your assessment practices.\n'
+const addRec9 = 'You may want to consider reducing your use of local vocabulary, cultural references, or metaphors unless you plan to take the time to explain them to your students. You may want to incorporate a tool like the Corpus of Contemporary American English. This can help students understand culturally specific vocabulary and phrases.\n'
+const addRec11 = 'Based on what you have reported, you may want to work towards being more inclusive of students with different backgrounds and opinions.\n'
+const addRec12 = 'Remember to teach your students the skills that they need to perform your chosen assessment tasks.\n'
+const addRec13 = 'You should notify students that they will be recorded when the assessment criteria are communicated.\n'
+const addRec7 = 'You may want to be more flexible in your time limits to ensure that students have the opportunity to clarify misunderstandings and respond appropriately.\n'
+const addRec14 = 'You should consider how you plan to resolve the differences in the scores that are assigned by different graders.\n'
 //const addRec15 = 'You may want to consider using a method to ensure that you are grading student performances consistently.'
 
 // Red Warning after table
@@ -47,6 +46,7 @@ const demoFactors2 = 'This can help their ability to demonstrate tasks or produc
 const demoFactors3 = 'You use them in your classroom activities.'
 const presentationFactors2 = 'You use them in your classroom.'
 const participationFactors2 = 'This will help prepare them for interactive assessments.'
+const groupFactors2 = 'You use this in your class.'
 
 // Constants that show up in Additional Recommendations row
 const interviewAddRec1 = 'Provide additonal time. Teach them how to ask for and provide clarification. Speak slowly.'
@@ -58,7 +58,6 @@ const demoAddRec1 = 'Avoid using hard cut-off times. Provide students with a mod
 const participationAddRec1 = 'Encourage the sharing of different viewpoints. Change the seating arrangement/groups often.'
 const simulationAddRec1 = 'Provide a model role play. Encourage the sharing of different viewpoints. Change the seating arrangement/groups often.'
 const portfolioAddRec1 = 'Make sure that they understand the importance of all tasks.'
-const groupFactors2 = 'You use this in your class.'
 
 // Constants that show up in Imrovements row
 const presentationImp1 = 'You may want to incorportate more of these into your everyday class activities.'
@@ -143,11 +142,54 @@ class OANinthPage extends Component {
   }
 
   additionalRecommendations(formValues) {
+    let additionalRecs = []
+    let toolExample
     const t = tools.map(option => {
       if (formValues[option]) {
-        this.setState({ addRec: `${toolsPart1}${option}${toolsPart2}` })
+        toolExample = `${toolsPart1}${option}${toolsPart2}`
       }
     })
+    if (toolExample) { 
+      additionalRecs.push(toolExample)
+    }
+    if (formValues.q7 !== 'No') {
+      additionalRecs.push(addRec2)
+    }
+    if (formValues.q48b === 'Yes') {
+      additionalRecs.push(addRec3)
+    } 
+    if (formValues.q48c === 'Yes' && formValues.q48d === 'Yes') {
+      additionalRecs.push(addRec4)
+    }
+    if (formValues.q48c !== 'Yes' || formValues.q48d !== 'Yes') {
+      additionalRecs.push(addRec5)
+    }
+    if (formValues.q42a !== 'Yes') {
+      additionalRecs.push(addRec6)
+    }
+    if (formValues.Limitedtimewithhardcutoff) {
+      additionalRecs.push(addRec7)
+    }
+    if (formValues.q36 === 'A small extent' || formValues.q36 === 'A very small extent') {
+      additionalRecs.push(addRec8)
+    }
+    if (formValues.q39 === 'Never' || formValues.q39 === 'Rarely' || formValues.q39 === 'Sometimes') {
+      additionalRecs.push(addRec9)
+    }
+
+    if (formValues.q66 !== 'No' || formValues.q67 !== 'No' || formValues.q68 !== 'Yes' || formValues.q69 !== 'No') {
+      additionalRecs.push(addRec11)
+    }
+    if (formValues.q38 !== 'No') {
+      additionalRecs.push(addRec12)
+    } 
+    if (formValues.q42c === 'No') {
+      additionalRecs.push(addRec13)
+    }
+    if (formValues.q51d === 'Don\t know') {
+      additionalRecs.push(addRec14)
+    }
+    this.setState({ addRec: additionalRecs })
   }
 
   oralExamCalculations(formValues) {
@@ -224,10 +266,8 @@ class OANinthPage extends Component {
     if (formValues.q2 <= 30) {
       this.setState({ warning: `${warningText}` })
     }
-    if (formValues.speakingPortfolioSelect && !(formValues.interviewsSelect || formValues.oralExamsSelect
-      || formValues.groupWorkSelect || formValues.presentationsSelect || formValues.demonstrationsSelect 
-      || formValues.presentationsSelect || formValues.participationSelect || formValues.simulationSelect)) {
-      this.setState({ warning: this.state.warning + `${warningText2}` })
+    if  (formValues.q55 !== 'Yes') {
+      this.setState({ warning: [...this.state.warning, `${warningText2}`] })
     }
   }
 
@@ -376,7 +416,6 @@ class OANinthPage extends Component {
                 component="input"
                 type="checkbox"
                 name="speakingPortfolioSelect"
-                onClick={this.showWarningMessage}
               />
             </td>
           </tr>

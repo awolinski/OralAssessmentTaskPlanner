@@ -1,12 +1,10 @@
 # Oral Assessment Task Planner
 
-Designed for undergraduate English-speaking instructors, this application helps teachers plan oral assessments and activities best suited for their course, given the language abilities of their students, and the classroom environment. The application takes approximately fifteen minutes to complete, and there is an option to save each page throughout the process. A final recommendation summary is provided on page nine. Further information about the tool can be found at: https://link.springer.com/article/10.1007%2Fs11423-015-9375-8.
+Designed for undergraduate English-speaking instructors, this application helps teachers plan oral assessments and activities best suited for their course, given the language abilities of their students, and the classroom environment. It will take approximately ten minutes to complete, and will generate a recommendation chart on page nine. Further information about the tool can be found at: https://link.springer.com/article/10.1007%2Fs11423-015-9375-8.
 
-## Develop is in progress. 
 
-## TODO: 
-    - Embed video/links to help define language levels that show upon button click page 2
-    - Bug fixes such as validation bugs
+## TODO:
+    - Add navigation bar to pages
     - Write unit tests
     - Comment code
 
