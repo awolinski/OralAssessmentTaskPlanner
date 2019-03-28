@@ -53,7 +53,7 @@ const interviewAddRec1 = 'Provide additonal time. Teach them how to ask for and 
 const oralAddRec1 = 'Have proficient speakers go first to provide an example. Allow extra time for questions. Ensure questions are understood. Move on when they aren\'t.'
 const groupAddRec1 = 'Provide a model of group work or discussions. Allow the use of support tools (e.g. translators).'
 const presentationAddRec1 = 'Avoid using hard cut-off times. Provide students with a model presentation.'
-//const presentationAddRec2 = 'Avoid using hard cut-off times. Provide students with a model presentation.'
+const presentationAddRec2 = 'Avoid using hard cut-off times. Provide students with a model presentation.'
 const demoAddRec1 = 'Avoid using hard cut-off times. Provide students with a model presentation.'
 const participationAddRec1 = 'Encourage the sharing of different viewpoints. Change the seating arrangement/groups often.'
 const simulationAddRec1 = 'Provide a model role play. Encourage the sharing of different viewpoints. Change the seating arrangement/groups often.'
@@ -91,7 +91,7 @@ class OANinthPage extends Component {
       presentationRec: 'Not',
       presentationFactors: '',
       presentationImp: '',
-      presentationAddRec: '',
+      presentationAddRec: presentationAddRec2,
       demoRec: 'Not',
       demoFactors: '',
       demoImp: '',
@@ -102,7 +102,7 @@ class OANinthPage extends Component {
       participationAddRec: '',
       simulationRec: 'Not',
       simulationFactors: '',
-      simulationImp: '',
+      simulationImp: simulationImp1,
       simulationAddRec: '',
       portfolioRec: 'Not',
       portfolioFactors: '',
@@ -120,6 +120,7 @@ class OANinthPage extends Component {
   this.portfolioCalculations = this.portfolioCalculations.bind(this)
   this.presentationCalculations = this.presentationCalculations.bind(this)
   this.simulationCalculations = this.simulationCalculations.bind(this)
+  this.demoCalculations = this.demoCalculations.bind(this)
 }
 
   componentDidMount() {
@@ -139,6 +140,7 @@ class OANinthPage extends Component {
     this.portfolioCalculations(formValues)
     this.presentationCalculations(formValues)
     this.simulationCalculations(formValues)
+    this.demoCalculations(formValues)
   }
 
   additionalRecommendations(formValues) {
@@ -192,9 +194,21 @@ class OANinthPage extends Component {
     this.setState({ addRec: additionalRecs })
   }
 
+  demoCalculations(formValues) {
+    if (formValues.q23 === 'Somewhat important' || formValues.q23 === 'Moderately important' || formValues.q23 === 'Highly important') {
+      this.setState({ demoRec: 'Highly' })
+    }
+    if (this.state.demoRec !== 'Not') {
+      this.setState({ demoImp: demoImp1 })
+    }
+    if (formValues.q19 === 'Somewhat important' || formValues.q19 === 'Moderately important' || formValues.q19 === 'Highly important') {
+      this.setState({ demoFactors: demoFactors1 })
+    }
+  }
+
   oralExamCalculations(formValues) {
     if (formValues.q12 === 'Often' || formValues.q12 === 'Very often' || formValues.q12 === 'Always') {
-      this.setState({ oralFactors: usedFactors })
+      this.setState({ oralFactors: usedFactors, oralRec: 'Moderately' })
     }
   }
 
@@ -202,23 +216,47 @@ class OANinthPage extends Component {
     if (formValues.q13 === 'Often' || formValues.q13 === 'Very often' || formValues.q13 === 'Always') {
       this.setState({ interviewFactors: usedFactors })
     }
+    if (formValues.q13 !== 'Rarely' && formValues.q13 !== 'Never') {
+      this.setState({ interviewRec: 'Moderately' })
+    }
+    if (formValues.q24 === 'Somewhat important' || formValues.q24 === 'Moderately important' || formValues.q24 === 'Highly important') {
+      this.setState({ interviewFactors: interviewFactors1 })
+    }
   }
 
   groupCalculations(formValues) {
     if (formValues.q2 < 8) { //Need actual values
       this.setState({ groupFactors: particAndGroupFactors1 })
     }
+    if (formValues.q19 === 'Somewhat important' || formValues.q19 === 'Moderately important' || formValues.q19 === 'Highly important') {
+      this.setState({ groupRec: 'Moderately' })
+    }
+    if (this.state.groupRec !== 'Not') {
+      this.setState({ groupImp: groupImp1 })
+    }
   }
 
   presentationCalculations(formValues) {
     if (formValues.q14 === 'Often' || formValues.q14 === 'Very often' || formValues.q14 === 'Always') {
-      this.setState({ presentationFactors: usedFactors })
+      this.setState({ presentationFactors: usedFactors, presentationRec: 'Moderately' })
+    }
+    if (formValues.q20 === 'Somewhat important' || formValues.q20 === 'Moderately important' || formValues.q20 === 'Highly important') {
+      this.setState({ presentationRec: 'Highly' })
+    }
+    if (this.state.presentationRec !== 'Not') {
+      this.setState({ presentationImp: presentationImp1 })
     }
   }
 
   portfolioCalculations(formValues) {
     if (formValues.q42a === 'Yes' || formValues.q42a === 'Maybe') {
       this.setState({ portfolioFactors: portfolioFactors1 })
+    }
+    if (formValues.q20 === 'Somewhat important' || formValues.q20 === 'Moderately important' || formValues.q20 === 'Highly important') {
+      this.setState({ portfolioRec: 'Highly' })
+    }
+    if (formValues.q55 === 'Yes') {
+      this.setState({ portfolioFactors: portfolioFactors2 })
     }
   }
 
@@ -260,6 +298,13 @@ class OANinthPage extends Component {
     }  else if (formValues.q17a === 'Yes') {
       this.setState({ simulationRec: 'Highly', simulationFactors: simulationFactors2 })
     } 
+    if (formValues.q16a === 'Yes' && formValues.q17a === 'Yes') {
+      this.setState({ simulationFactors: `${simulationFactors1} ${simulationFactors2}` })
+    } else if (formValues.q16a === 'Yes') {
+      this.setState({ simulationFactors: simulationFactors1 })
+    } else if (formValues.q17a === 'Yes') {
+      this.setState({ simulationFactors: simulationFactors2 })
+    }
   }
 
   showWarningMessage(formValues) {
