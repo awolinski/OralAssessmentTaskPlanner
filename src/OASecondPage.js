@@ -2,15 +2,15 @@ import React, {Component} from 'react'
 import { Field, reduxForm } from 'redux-form'
 import {tools, environment, extentOptions, progressOptions, classSize, percentage, hours, weeks} from './Components/DropdownOptions'
 
-const q1 = 'Approximately how many students do you have in your class?'
-const q2 = 'Approximately what percentage of your students are second language learners?'
-const q3 = 'How many hours of class do you have each week?'
-const q3b = 'How many weeks of class do you have?'
-const q4 = 'Which of the following tools do you have access to in your classroom?'
-const q5 ='To what extent do your students share a common cultural background?' 
-const q6 = 'Where does your course fit into their academic program?'
-const q7 = 'Are your students in the course predominantly from the same discipline?'
-const q8 = 'Which of the following describes your classroom environment?'
+export const q1 = 'Approximately how many students do you have in your class?'
+export const q2 = 'Approximately what percentage of your students are second language learners?'
+export const q3 = 'How many hours of class do you have each week?'
+export const q3b = 'How many weeks of class do you have?'
+export const q4 = 'Which of the following tools do you have access to in your classroom?'
+export const q5 ='To what extent do your students share a common cultural background?' 
+export const q6 = 'Where does your course fit into their academic program?'
+export const q7 = 'Are your students in the course predominantly from the same discipline?'
+export const q8 = 'Which of the following describes your classroom environment?'
 
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false
@@ -22,8 +22,8 @@ class OASecondPage extends Component {
   }
 
   render () {
-    const { handleSubmit, previousPage, savePage } = this.props
-    const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+    const { handleSubmit, previousPage } = this.props
+    const formSheet =  this.props.printStyle ? this.props.printStyle : {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
     const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
 
     return (
@@ -146,9 +146,6 @@ class OASecondPage extends Component {
         <div>
           <button type="button" className="previous" onClick={previousPage}>
             Previous
-          </button>
-          <button type="button" onClick={savePage}>
-            Save page
           </button>
           <button type="submit" className="next">
             Next

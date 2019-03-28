@@ -14,12 +14,24 @@ const addRec2 = 'You should explain your expectations for each of your assessmen
 const addRec3 = 'It\'s great that you are using established criteria.'
 const addRec4 = 'It\'s great that your criteria measure different aspects and levels of student performance.'
 const addRec5 = 'You may want to give more attention to your criteria in order to ensure that they fairly and adequately distinguish different aspects and levels of student performance.'
+//const addRec6 = 'You may want to consider recording your students\' performances and giving them a copy so that they have evidence of their abilities to communicate orally.'
+//const addRec8 = 'Your students may benefit from your providing more detailed descriptions of your expectations and how they relate to your assessment practices.'
+//const addRec9 = 'You may want to consider reducing your use of local vocabulary, cultural references, or metaphors unless you plan to take the time to explain them to your students.'
+//const addRec10 = 'You may want to incorporate a tool like the Corpus of Contemporary American English. This can help students understand culturally specific vocabulary and phrases.'
+//const addRec11 = 'Based on what you have reported, you may want to work towards being more inclusive of students with different backgrounds and opinions.'
+//const addRec12 = 'Remember to teach your students the skills that they need to perform your chosen assessment tasks.'
+//const addRec13 = 'You should notify students that they will be recorded when the assessment criteria are communicated.'
+//const addRec7 = 'You may want to be more flexible in your time limits to ensure that students have the opportunity to clarify misunderstandings and respond appropriately.'
+//const addRec14 = 'You should consider how you plan to resolve the differences in the scores that are assigned by different graders.'
+//const addRec15 = 'You may want to consider using a method to ensure that you are grading student performances consistently.'
 
 // Red Warning after table
-const warningText = 'Text eg: Since you have so few language learners…'
+const warningText = 'Since you have so few second language learners, it is especially important that you pay attention to their involvement and inclusion in your course.'
+const warningText2 = 'At least one other assessment method must be selected.'
 
 // Constants that show up in factors row
 const portfolioFactors1 = 'You are already recording their performances.'
+const portfolioFactors2 = 'You are already using multiple assessment methods.'
 const simulationFactors1 = 'These allow students to demonstrate specific skills.'
 const simulationFactors2 = 'These allow students to demonstrate specific knowledge.'
 const demoFactors1 = 'Your students need to be able to explain things to others.'
@@ -41,12 +53,12 @@ const interviewAddRec1 = 'Provide additonal time. Teach them how to ask for and 
 const oralAddRec1 = 'Have proficient speakers go first to provide an example. Allow extra time for questions. Ensure questions are understood. Move on when they aren\'t.'
 const groupAddRec1 = 'Provide a model of group work or discussions. Allow the use of support tools (e.g. translators).'
 const presentationAddRec1 = 'Avoid using hard cut-off times. Provide students with a model presentation.'
+//const presentationAddRec2 = 'Avoid using hard cut-off times. Provide students with a model presentation.'
 const demoAddRec1 = 'Avoid using hard cut-off times. Provide students with a model presentation.'
 const participationAddRec1 = 'Encourage the sharing of different viewpoints. Change the seating arrangement/groups often.'
 const simulationAddRec1 = 'Provide a model role play. Encourage the sharing of different viewpoints. Change the seating arrangement/groups often.'
 const portfolioAddRec1 = 'Make sure that they understand the importance of all tasks.'
 const groupFactors2 = 'You use this in your class.'
-const portfolioFactors2 = 'You are already using multiple assessment methods.'
 
 // Constants that show up in Imrovements row
 const presentationImp1 = 'You may want to incorportate more of these into your everyday class activities.'
@@ -209,18 +221,23 @@ class OANinthPage extends Component {
   }
 
   showWarningMessage(formValues) {
-    if (formValues.q2 < 30) { //actual number needed
+    if (formValues.q2 <= 30) {
       this.setState({ warning: `${warningText}` })
+    }
+    if (formValues.speakingPortfolioSelect && !(formValues.interviewsSelect || formValues.oralExamsSelect
+      || formValues.groupWorkSelect || formValues.presentationsSelect || formValues.demonstrationsSelect 
+      || formValues.presentationsSelect || formValues.participationSelect || formValues.simulationSelect)) {
+      this.setState({ warning: this.state.warning + `${warningText2}` })
     }
   }
 
   render () {
-    const formSheet = {"font-size": "15px", "position": "absolute", "top": "3%", "left": "5%", "right": "5%", "font-weight": "200"}
+    const formSheet = this.props.printStyle ? this.props.printStyle : {"font-size": "15px", "position": "absolute", "top": "3%", "left": "5%", "right": "5%", "font-weight": "200"}
     const warningStyle = {"color": "red"}
     const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
     const table = {"padding": "15px", "textAlign": "center"}
 
-    const { handleSubmit, previousPage, formValues, savePage } = this.props
+    const { handleSubmit, previousPage, formValues } = this.props
 
     return (
       <form onSubmit={handleSubmit} style={formSheet}>
@@ -359,6 +376,7 @@ class OANinthPage extends Component {
                 component="input"
                 type="checkbox"
                 name="speakingPortfolioSelect"
+                onClick={this.showWarningMessage}
               />
             </td>
           </tr>
@@ -375,9 +393,6 @@ class OANinthPage extends Component {
       <div>
         <button type="button" className="previous" onClick={previousPage}>
           Previous
-        </button>
-        <button type="button" onClick={savePage}>
-          Save page
         </button>
         <button type="submit" className="next">
           Next

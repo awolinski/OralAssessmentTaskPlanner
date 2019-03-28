@@ -2,29 +2,28 @@ import React, {Component} from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { importanceOptions, oftenOptions } from './Components/DropdownOptions'
 
-const q12 = 'How often are oral exams used at your institution?'
-const q13 = 'How often are interviews used at your institution?'
-const q14 = 'How often are student presentations used at your institution?'
-const q15 = 'Do you want to determine student oral proficiency?'
-const q16a = 'Do you want to see if students have mastered a specific skill?'
-const q16b = 'Which one?'
-const q17a = 'Do you want to see if students have mastered specific knowledge?' 
-const q17b = 'What knowledge?'
-const q18 = 'Are you trying to place students into groups for coursework?'
-const q19 = 'How important is it for your students to be able to explain or teach things to others?'
-const q20 = 'How important is it for your students to be able to present their work?'
-const q21 = 'How important is it for your students to be able to negotiate?'
-const q22 = 'How important is it for your students to be able to debate?'
-const q23 = 'How important is it for your students to be able to demonstrate how something is done or used?'
-const q24 = 'How important is it for your students to be able to ask questions or comment on another’s work?'
-const q25 = 'How important is it for your students to be able to respond to questions or comments on their work?'
-const q26 = 'How often do people in your field negotiate once they are in the workplace?'
-const q27 = 'How often do people in your field debate once they are in the workplace?'
-const q28 = 'How often do people in your field work in groups once they are in the workplace?'
-const q29 = 'How often do people in your field do presentations once they are in the workplace?'
-const q30 = 'How often do people in your field demonstrate how something is done or used once they are in the workplace?'
-const q31 = 'How often do people in your field have to explain or teach concepts once they are in the workplace?'
-
+export const q12 = 'How often are oral exams used at your institution?'
+export const q13 = 'How often are interviews used at your institution?'
+export const q14 = 'How often are student presentations used at your institution?'
+export const q15 = 'Do you want to determine student oral proficiency?'
+export const q16a = 'Do you want to see if students have mastered a specific skill?'
+export const q16b = 'Which one?'
+export const q17a = 'Do you want to see if students have mastered specific knowledge?' 
+export const q17b = 'What knowledge?'
+export const q18 = 'Are you trying to place students into groups for coursework?'
+export const q19 = 'How important is it for your students to be able to explain or teach things to others?'
+export const q20 = 'How important is it for your students to be able to present their work?'
+export const q21 = 'How important is it for your students to be able to negotiate?'
+export const q22 = 'How important is it for your students to be able to debate?'
+export const q23 = 'How important is it for your students to be able to demonstrate how something is done or used?'
+export const q24 = 'How important is it for your students to be able to ask questions or comment on another’s work?'
+export const q25 = 'How important is it for your students to be able to respond to questions or comments on their work?'
+export const q26 = 'How often do people in your field negotiate once they are in the workplace?'
+export const q27 = 'How often do people in your field debate once they are in the workplace?'
+export const q28 = 'How often do people in your field work in groups once they are in the workplace?'
+export const q29 = 'How often do people in your field do presentations once they are in the workplace?'
+export const q30 = 'How often do people in your field demonstrate how something is done or used once they are in the workplace?'
+export const q31 = 'How often do people in your field have to explain or teach concepts once they are in the workplace?'
 
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false
@@ -54,12 +53,12 @@ class OAFourthPage extends Component {
   }
 
   render () {
-    const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+    const formSheet =  this.props.printStyle ? this.props.printStyle : {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
     const style16 = this.state.hide16 ? {display: 'none'} : {};
     const style17 = this.state.hide17 ? {display: 'none'} : {};
     const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
 
-    const { handleSubmit, previousPage, savePage } = this.props
+    const { handleSubmit, previousPage } = this.props
 
     return (
       <form onSubmit={handleSubmit} style={formSheet}>
@@ -334,9 +333,6 @@ class OAFourthPage extends Component {
       <div>
         <button type="button" className="previous" onClick={previousPage}>
           Previous
-        </button>
-        <button type="button" onClick={savePage}>
-            Save page
         </button>
         <button type="submit" className="next">
           Next

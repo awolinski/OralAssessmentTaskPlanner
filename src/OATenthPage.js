@@ -3,21 +3,21 @@ import { Field, reduxForm } from 'redux-form'
 
 const reminder = 'Please keep your chosen methods in mind when answering these questions.'
 const chose = 'You chose: '
-const pq1 = 'How do you ensure that students from different backgrounds work together?'
-const pq2 = 'How do you ensure that your assessments provide ALL students with an equal opportunity to demonstrate their knowledge or skills?'
-const pq3 = 'How do you ensure that your assessment methods measure what you intend?'
-const pq4 = 'How do you ensure that ALL students have an equal opportunity to participate in the assessment?'
-const pq5 = 'What procedures have you put in place to ensure equal participation and interaction between students?'
-const pq6 = 'How do you ensure that you are not imposing your personal values on students?'
-const pq7 = 'How do you accomodate different student needs and world views?'
-const pq8 = 'How will you mitigate any potential repercussions that the assessment method may have?'
+export const pq1 = 'How do you ensure that students from different backgrounds work together?'
+export const pq2 = 'How do you ensure that your assessments provide ALL students with an equal opportunity to demonstrate their knowledge or skills?'
+export const pq3 = 'How do you ensure that your assessment methods measure what you intend?'
+export const pq4 = 'How do you ensure that ALL students have an equal opportunity to participate in the assessment?'
+export const pq5 = 'What procedures have you put in place to ensure equal participation and interaction between students?'
+export const pq6 = 'How do you ensure that you are not imposing your personal values on students?'
+export const pq7 = 'How do you accomodate different student needs and world views?'
+export const pq8 = 'How will you mitigate any potential repercussions that the assessment method may have?'
 
 const OATenthPage = props => {
-  const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+  const formSheet =  props.printStyle ? props.printStyle : {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
   const text = {"font-size": "15px", "font-weight": "225"}
   const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
 
-  const { handleSubmit, previousPage, formValues, savePage } = props
+  const { handleSubmit, previousPage, formValues, returnHomePage } = props
 
   let methods = []
   formValues.interviewsSelect ? methods.push('Interviews') : ''
@@ -106,10 +106,10 @@ const OATenthPage = props => {
         <button type="button" className="previous" onClick={previousPage}>
           Previous
         </button>
-        <button type="button" onClick={savePage}>
-          Save page
+        <button type="submit">
+          Save planner
         </button>
-        <button type="submit" className="next">
+        <button type="button" className="next" onClick={returnHomePage}>
           Start over
         </button>
       </div>

@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { languageLevel, languageLevelIelts } from './Components/DropdownOptions'
 
-const q9 = 'What is the minimum English proficiency that is needed for acceptance to your institution?'
-const q10 = 'What resources does your institution provide for second language learners?'
-const q11a = 'Do your students need evidence of their English proficiency level to obtain employment following graduation?'
-const q11b = 'What type of evidence is required?'
-const q11c = 'Does your institution provide a way for students to obtain this evidence?'
+export const q9 = 'What is the minimum English proficiency that is needed for acceptance to your institution?'
+export const q10 = 'What resources does your institution provide for second language learners?'
+export const q11a = 'Do your students need evidence of their English proficiency level to obtain employment following graduation?'
+export const q11b = 'What type of evidence is required?'
+export const q11c = 'Does your institution provide a way for students to obtain this evidence?'
 
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false
@@ -19,6 +19,9 @@ class OAThirdPage extends Component {
     };
   this.showFields = this.showFields.bind(this)
   this.hideFields = this.hideFields.bind(this)
+  this.openToeflScoring = this.openToeflScoring.bind(this)
+  this.openIeltsScoring = this.openIeltsScoring.bind(this)
+  this.openToeicScoring = this.openToeicScoring.bind(this)
   }
 
   showFields() {
@@ -29,10 +32,22 @@ class OAThirdPage extends Component {
     this.setState({ hide: true })
   }
 
+  openToeflScoring() {
+    window.open('https://www.etsglobal.org/content/download/14151/231263/version/4/file/Understanding+your+TOEFL+Primary+Speaking+Score+Reports.pdf')
+  }
+
+  openIeltsScoring() {
+    window.open('https://takeielts.britishcouncil.org/sites/default/files/2018-01/Speaking%20Band%20descriptors_0.pdf')
+  }
+
+  openToeicScoring() {
+    window.open('https://www.etsglobal.org/Global/Eng/content/download/825/12605/version/4/file/TOEIC+Speaking+and+Writing+Descriptor+-+MAR090-LR.pdf')
+  }
+
   render () {
     const style = this.state.hide ? {display: 'none'} : {};
-    const { handleSubmit, previousPage, savePage } = this.props
-    const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+    const { handleSubmit, previousPage } = this.props
+    const formSheet =  this.props.printStyle ? this.props.printStyle : {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
     const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
 
     return (
@@ -69,6 +84,21 @@ class OAThirdPage extends Component {
         <div>
           <Field name="q9" component={renderError} />
         </div>
+      </div>
+      <div><br/><br/>
+          <button type="button" className="previous" onClick={this.openToeflScoring}>
+            Learn more about TOEFL scores
+          </button>
+      </div>
+      <div>
+          <button type="button" className="previous" onClick={this.openIeltsScoring}>
+            Learn more about IELTS scores
+          </button>
+      </div>
+      <div>
+          <button type="button" className="previous" onClick={this.openToeicScoring}>
+            Learn more about TOEIC scores
+          </button>
       </div>
       <div>
         <div><label>{q10}</label></div>
@@ -109,9 +139,6 @@ class OAThirdPage extends Component {
         <button type="button" className="previous" onClick={previousPage}>
           Previous
         </button>
-        <button type="button" onClick={savePage}>
-            Save page
-          </button>
         <button type="submit" className="next">
           Next
         </button>

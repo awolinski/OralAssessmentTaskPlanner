@@ -1,23 +1,23 @@
 import React, {Component} from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-const q56 = 'Do you provide written instructions?'
-const q57 = 'Do you provide oral instructions?'
-const q58 = 'Is the expected content of the assessment known to students?'
-const q59 = 'Is the expected content of the assessment related to the course material?'
-const q60a = 'Do students understand how they will be assessed?'
-const q60b = 'How do you know this?'
-const q61a = 'Can your students understand the instructions that accompany an assessment?'
-const q61b = 'How do you know this?'
-const q62a = 'Can your students understand the grading procedures that you use?'
-const q62b = 'How do you know this?'
-const q63 = 'Do all students have access to the same information about the test and its administration?'
-const q64 = 'Is information regarding the assessment purpose, format, and administration (time, place, etc.) available ahead of time and in accessible formats?'
-const q65 = 'Are students familiar with the format and procedures used?'
-const q66 = 'Does the assessment material contain controversial or potentially inflammatory content? (e.g., religion, evolution, etc.)'
-const q67 = 'Does the assessment material depict groups in stereotyped situations? (e.g., a Chinese person running a laundromat or girls needing help with problems)'
-const q68 = 'Does the assessment method account for introverted students?'
-const q69 = 'Do you use culturally-specific content?'
+export const q56 = 'Do you provide written instructions?'
+export const q57 = 'Do you provide oral instructions?'
+export const q58 = 'Is the expected content of the assessment known to students?'
+export const q59 = 'Is the expected content of the assessment related to the course material?'
+export const q60a = 'Do students understand how they will be assessed?'
+export const q60b = 'How do you know this?'
+export const q61a = 'Can your students understand the instructions that accompany an assessment?'
+export const q61b = 'How do you know this?'
+export const q62a = 'Can your students understand the grading procedures that you use?'
+export const q62b = 'How do you know this?'
+export const q63 = 'Do all students have access to the same information about the test and its administration?'
+export const q64 = 'Is information regarding the assessment purpose, format, and administration (time, place, etc.) available ahead of time and in accessible formats?'
+export const q65 = 'Are students familiar with the format and procedures used?'
+export const q66 = 'Does the assessment material contain controversial or potentially inflammatory content? (e.g., religion, evolution, etc.)'
+export const q67 = 'Does the assessment material depict groups in stereotyped situations? (e.g., a Chinese person running a laundromat or girls needing help with problems)'
+export const q68 = 'Does the assessment method account for introverted students?'
+export const q69 = 'Do you use culturally-specific content?'
 
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false
@@ -58,10 +58,10 @@ class OAEighthPage extends Component {
     const style60 = this.state.hide60 ? {display: 'none'} : {};
     const style61 = this.state.hide61 ? {display: 'none'} : {};
     const style62 = this.state.hide62 ? {display: 'none'} : {};
-    const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+    const formSheet =  this.props.printStyle ? this.props.printStyle : {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
     const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
 
-    const { handleSubmit, previousPage, savePage } = this.props
+    const { handleSubmit, previousPage } = this.props
 
     return (
       <form onSubmit={handleSubmit} style={formSheet}>
@@ -107,7 +107,7 @@ class OAEighthPage extends Component {
         <div>
           <label><Field name="q60a" component="input" type="radio" value="Yes" onChange={this.showFields}/> Yes</label>
           <label><Field name="q60a" component="input" type="radio" value="No" onChange={this.hideFields}/> No</label>
-          <label><Field name="q60a" component="input" type="radio" value="Don't know" onChange={this.showFields}/> Don't know</label>
+          <label><Field name="q60a" component="input" type="radio" value="Don't know"/> Don't know</label>
           <Field name="q60a" component={renderError} />
         </div>
       </div>
@@ -124,7 +124,7 @@ class OAEighthPage extends Component {
         <div>
           <label><Field name="q61a" component="input" type="radio" value="Yes" onChange={this.showFields}/> Yes</label>
           <label><Field name="q61a" component="input" type="radio" value="No" onChange={this.hideFields}/> No</label>
-          <label><Field name="q61a" component="input" type="radio" value="Don't know" onChange={this.showFields}/> Don't know</label>
+          <label><Field name="q61a" component="input" type="radio" value="Don't know"/> Don't know</label>
           <Field name="q61a" component={renderError} />
         </div>
       </div>
@@ -141,7 +141,7 @@ class OAEighthPage extends Component {
         <div>
           <label><Field name="q62a" component="input" type="radio" value="Yes" onChange={this.showFields}/> Yes</label>
           <label><Field name="q62a" component="input" type="radio" value="No" onChange={this.hideFields}/> No</label>
-          <label><Field name="q62a" component="input" type="radio" value="Don't know" onChange={this.showFields}/> Don't know</label>
+          <label><Field name="q62a" component="input" type="radio" value="Don't know"/> Don't know</label>
           <Field name="q62a" component={renderError} />
         </div>
       </div>
@@ -219,9 +219,6 @@ class OAEighthPage extends Component {
       <div>
         <button type="button" className="previous" onClick={previousPage}>
           Previous
-        </button>
-        <button type="button" onClick={savePage}>
-          Save page
         </button>
         <button type="submit" className="next">
           Next

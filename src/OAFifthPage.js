@@ -2,16 +2,16 @@ import React, {Component} from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { oftenOptions, extentOptions } from './Components/DropdownOptions'
 
-const q32 = 'How often do you intend to use ungraded demonstrations?'
-const q33 = 'How often do you intend to use ungraded presentations?'
-const q34 = 'How often do you intend to use ungraded groupwork?'
-const q35 = 'To what extent do you tailor how you teach to the assessment method?'
-const q36 = 'To what extent do you explain the behavioural expectations that you have of your students?'
-const q37 = 'To what extent do you make students aware of how your teaching relates to their assessment?'
-const q38 = 'Will the assessment require you to teach specific skills before students are able to perform the task?' 
-const q39 = 'How often do you explain local vocabulary, informal language, metaphors, and cultural references?'
-const q40 = 'Do you primarily use simple sentences to deliver instructions?'
-const q41 = 'To what extent do you intervene when you observe other students within your class engaging in behaviours that show cultural insensitivity, racial biases or stereotyping?'
+export const q32 = 'How often do you intend to use ungraded demonstrations?'
+export const q33 = 'How often do you intend to use ungraded presentations?'
+export const q34 = 'How often do you intend to use ungraded groupwork?'
+export const q35 = 'To what extent do you tailor how you teach to the assessment method?'
+export const q36 = 'To what extent do you explain the behavioural expectations that you have of your students?'
+export const q37 = 'To what extent do you make students aware of how your teaching relates to their assessment?'
+export const q38 = 'Will the assessment require you to teach specific skills before students are able to perform the task?' 
+export const q39 = 'How often do you explain local vocabulary, informal language, metaphors, and cultural references?'
+export const q40 = 'Do you primarily use simple sentences to deliver instructions?'
+export const q41 = 'To what extent do you intervene when you observe other students within your class engaging in behaviours that show cultural insensitivity, racial biases or stereotyping?'
 
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false
@@ -26,8 +26,8 @@ class OAFifthPage extends Component {
   }
 
   render () {
-    const { handleSubmit, previousPage, savePage } = this.props
-    const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+    const { handleSubmit, previousPage } = this.props
+    const formSheet =  this.props.printStyle ? this.props.printStyle : {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
     const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
 
     return (
@@ -162,9 +162,6 @@ class OAFifthPage extends Component {
       <div>
         <button type="button" className="previous" onClick={previousPage}>
           Previous
-        </button>
-        <button type="button" onClick={savePage}>
-          Save page
         </button>
         <button type="submit" className="next">
           Next

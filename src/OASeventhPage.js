@@ -2,26 +2,26 @@ import React, {Component} from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { formalityOptions, somewhatOptions, numberOfMarkers, resolvingDifferences } from './Components/DropdownOptions'
 
-const q47a = 'Are you expecting a formal academic performance?'
-const q47b = 'What level of formality do you expect in the interaction or presentation to have?'
-const q48a = 'Do you have criteria for grading?'
-const q48b = 'Are you using established criteria?'
-const q48c = 'Can each of the criterion be measured independently?'
-const q48d = 'Do the criteria adequately distinguish different levels of performance?' 
-const q48e = 'Do your criteria clearly and explicitly describe student performance?'
-const q48f = 'Do your criteria disadvantage students with non-majority accents?'
-const q49 = 'To what degree is the assessment interactive?'
-const q50 = 'How many people will be marking the task?'
-const q51a = 'Are other instructional staff or an outside assessor helping?'
-const q51b = 'Will self-assessment be used?'
-const q51c = 'Are students assessing each other’s work?'
-const q51d = 'How will you resolve differences in scoring between assessors?'
-const q51e = 'Will you train the other assessors?'
-const q52 = 'How do you intend to train the other assessors?'
-const q53 = 'How do you plan to '
-const q53b = 'communicate the criteria?'
-const q54 = 'Do you verify (i.e., double check) the grades that you assign?'
-const q55 = 'Do you plan to use more than 1 assessment method or task to determine the student grades?'
+export const q47a = 'Are you expecting a formal academic performance?'
+export const q47b = 'What level of formality do you expect in the interaction or presentation to have?'
+export const q48a = 'Do you have criteria for grading?'
+export const q48b = 'Are you using established criteria?'
+export const q48c = 'Can each of the criterion be measured independently?'
+export const q48d = 'Do the criteria adequately distinguish different levels of performance?' 
+export const q48e = 'Do your criteria clearly and explicitly describe student performance?'
+export const q48f = 'Do your criteria disadvantage students with non-majority accents?'
+export const q49 = 'To what degree is the assessment interactive?'
+export const q50 = 'How many people will be marking the task?'
+export const q51a = 'Are other instructional staff or an outside assessor helping?'
+export const q51b = 'Will self-assessment be used?'
+export const q51c = 'Are students assessing each other’s work?'
+export const q51d = 'How will you resolve differences in scoring between assessors?'
+export const q51e = 'Will you train the other assessors?'
+export const q52 = 'How do you intend to train the other assessors?'
+export const q53 = 'How do you plan to '
+export const q53b = 'communicate the criteria?'
+export const q54 = 'Do you verify (i.e., double check) the grades that you assign?'
+export const q55 = 'Do you plan to use more than 1 assessment method or task to determine the student grades?'
 
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false
@@ -68,10 +68,10 @@ class OASeventhPage extends Component {
     const style48 = this.state.hide48 ? {display: 'none'} : {};
     const style51 = this.state.hide51 ? {display: 'none'} : {};
     const style51e = this.state.hide51e ? {display: 'none'} : {};
-    const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+    const formSheet =  this.props.printStyle ? this.props.printStyle : {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
     const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
 
-    const { handleSubmit, previousPage, savePage } = this.props
+    const { handleSubmit, previousPage } = this.props
 
     return (
       <form onSubmit={handleSubmit} style={formSheet}>
@@ -266,9 +266,6 @@ class OASeventhPage extends Component {
         <button type="button" className="previous" onClick={previousPage}>
           Previous
         </button>
-        <button type="button" onClick={savePage}>
-          Save page
-        </button>
         <button type="submit" className="next">
           Next
         </button>
@@ -322,19 +319,19 @@ const validate = values => {
   if (values.q48a !== 'No' && !values.q48f) {
     errors.q48f = 'Required'
   }
-  if (values.q51a !== 'No' && !values.q51b) {
+  if (values.q51a === 'Yes' && !values.q51b) {
     errors.q51b = 'Required'
   }
-  if (values.q51a !== 'No' && !values.q51c) {
+  if (values.q51a === 'Yes' && !values.q51c) {
     errors.q51c = 'Required'
   }
-  if (values.q51a !== 'No' && !values.q51d) {
+  if (values.q51a === 'Yes' && !values.q51d) {
     errors.q51d = 'Required'
   }
-  if (values.q51a !== 'No' && !values.q51e) {
+  if (values.q51a === 'Yes' && !values.q51e) {
     errors.q51e = 'Required'
   }
-  if (values.q51e !== 'No' && !values.q52) {
+  if (values.q51e === 'Yes' && !values.q52) {
     errors.q52 = 'Required'
   }
 

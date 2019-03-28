@@ -2,17 +2,17 @@ import React, {Component} from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { recordingOptions, observerOptions, timeOptions } from './Components/DropdownOptions'
 
-const q42a = 'Do you plan to record student performances?'
-const q42b = 'I will record'
-const q42c = 'Will they be told that they are going to be recorded?'
-const q42d = 'Will they be given a copy of the recording?'
-const q43a = 'Will they be performing in front of an audience?'
-const q43b = 'Who will be in the audience?'
-const q44a = 'Will students have to respond to questions or comments?'
-const q44b = 'Who will be asking questions or commenting?'
-const q45a = 'Will students have to comment or ask questions?'
-const q45b = 'Who will they be talking with?'
-const q46 = 'What time constraints do you impose on oral performance tasks?' 
+export const q42a = 'Do you plan to record student performances?'
+export const q42b = 'I will record'
+export const q42c = 'Will they be told that they are going to be recorded?'
+export const q42d = 'Will they be given a copy of the recording?'
+export const q43a = 'Will they be performing in front of an audience?'
+export const q43b = 'Who will be in the audience?'
+export const q44a = 'Will students have to respond to questions or comments?'
+export const q44b = 'Who will be asking questions or commenting?'
+export const q45a = 'Will students have to comment or ask questions?'
+export const q45b = 'Who will they be talking with?'
+export const q46 = 'What time constraints do you impose on oral performance tasks?' 
 
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false
@@ -59,10 +59,10 @@ class OASixthPage extends Component {
     const style43 = this.state.hide43 ? {display: 'none'} : {};
     const style44 = this.state.hide44 ? {display: 'none'} : {};
     const style45 = this.state.hide45 ? {display: 'none'} : {};
-    const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
+    const formSheet =  this.props.printStyle ? this.props.printStyle : {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
     const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
 
-    const { handleSubmit, previousPage, savePage } = this.props
+    const { handleSubmit, previousPage } = this.props
 
     return (
       <form onSubmit={handleSubmit} style={formSheet}>
@@ -127,7 +127,7 @@ class OASixthPage extends Component {
                 <Field
                   component="input"
                   type="checkbox"
-                  name={opt}
+                  name={`${opt}1`}
                 />{opt}
               </label>
             );
@@ -152,7 +152,7 @@ class OASixthPage extends Component {
                 <Field
                   component="input"
                   type="checkbox"
-                  name={opt}
+                  name={`${opt}2`}
                 />{opt}
               </label>
             );
@@ -177,7 +177,7 @@ class OASixthPage extends Component {
                 <Field
                   component="input"
                   type="checkbox"
-                  name={opt}
+                  name={`${opt}3`}
                 />{opt}
               </label>
             );
@@ -203,9 +203,6 @@ class OASixthPage extends Component {
       <div>
         <button type="button" className="previous" onClick={previousPage}>
           Previous
-        </button>
-        <button type="button" onClick={savePage}>
-          Save page
         </button>
         <button type="submit" className="next">
           Next

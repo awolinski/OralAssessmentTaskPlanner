@@ -55,49 +55,42 @@ class OAForm extends Component {
           <OASecondPage
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
-            savePage={this.savePage}
           />
         )}
         {page === 3 && (
           <OAThirdPage
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
-            savePage={this.savePage}
           />
         )}
         {page === 4 && (
           <OAFourthPage
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
-            savePage={this.savePage}
           />
         )}
         {page === 5 && (
           <OAFifthPage
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
-            savePage={this.savePage}
           />
         )}
         {page === 6 && (
           <OASixthPage
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
-            savePage={this.savePage}
           />
         )}
         {page === 7 && (
           <OASeventhPage
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
-            savePage={this.savePage}
           />
         )}
         {page === 8 && (
           <OAEighthPage
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
-            savePage={this.savePage}
           />
         )}
         {page === 9 && (
@@ -105,15 +98,14 @@ class OAForm extends Component {
             formValues={this.state.formValues}
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
-            savePage={this.savePage}
           />
         )}
         {page === 10 && (
           <OATenthPage
             formValues={this.state.formValues}
             previousPage={this.previousPage}
-            onSubmit={this.returnToWelcomePage}
-            savePage={this.savePage}
+            returnHomePage={this.returnToWelcomePage}
+            onSubmit={this.nextPage}
         />
         )}
         {page === 11 && (

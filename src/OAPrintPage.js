@@ -1,110 +1,101 @@
-// import React, {Component} from 'react'
-// import { Field, reduxForm } from 'redux-form'
+import React, { Component } from 'react'
+import OASecondPage from './OASecondPage'
+import OAThirdPage from './OAThirdPage'
+import OAFourthPage from './OAFourthPage'
+import OAFifthPage from './OAFifthPage'
+import OASixthPage from './OASixthPage'
+import OASeventhPage from './OASeventhPage'
+import OAEighthPage from './OAEighthPage'
+import OANinthPage from './OANinthPage'
+import OATenthPage from './OATenthPage'
 
-// const q1 = 'Approximately how many students do you have in your class?'
-// const q2 = 'Approximately what percentage of your students are second language learners?'
-// const q3 = 'How many hours of class do you have each week?'
-// const q3b = 'How many weeks of class do you have?'
-// const q4 = 'Which of the following tools do you have access to in your classroom?'
-// const q5 ='To what extent do your students share a common cultural background?' 
-// const q6 = 'Where does your course fit into their academic program?'
-// const q7 = 'Are your students in the course predominantly from the same discipline?'
-// const q8 = 'Which of the following describes your classroom environment?'
+class OAPrintPage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      formValues: {},
+    }
+  }
 
-// const renderError = ({ meta: { touched, error } }) =>
-//   touched && error ? <span>{error}</span> : false
+  componentDidMount() {
+      window.print()
+      this.props.previousPage()
+  }
 
-// class OAPrintPage extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {};
-//   }
+  render() {
+    const { onSubmit, formValues, previousPage, savePage } = this.props
+    const divStyle = {"font-size": "15px", "top": "3%", "left": "5%", "right": "5%", "font-weight": "200", "position": "relative !important", "padding-top": "100px !important"}
+    return (
+      <div>
+        <div style={divStyle}>
+          <OASecondPage
+            printStyle={divStyle}
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        </div><br/><br/>
+        <div style={divStyle}>
+          <OAThirdPage
+            printStyle={divStyle}
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        </div><br/><br/>
+        <div style={divStyle}>
+          <OAFourthPage
+            printStyle={divStyle}
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        </div><br/><br/>
+        <div style={divStyle}>
+          <OAFifthPage
+            printStyle={divStyle}
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        </div><br/><br/>
+        <div style={divStyle}>
+          <OASixthPage
+            printStyle={divStyle}
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        </div><br/><br/>
+        <div style={divStyle}>
+          <OASeventhPage
+            printStyle={divStyle}
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        </div><br/><br/>
+        <div style={divStyle}>
+          <OAEighthPage
+            printStyle={divStyle}
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        </div><br/><br/>
+        <div style={divStyle}>
+          <OANinthPage
+            printStyle={divStyle}
+            formValues={this.state.formValues}
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        </div><br/><br/>
+        <div style={divStyle}>
+          <OATenthPage
+            printStyle={divStyle}
+            formValues={this.state.formValues}
+            previousPage={this.previousPage}
+            returnHomePage={this.returnToWelcomePage}
+            onSubmit={this.nextPage}
+        />
+        </div>
+      </div>
+    )
+  }
+}
 
-//   render () {
-//     const { handleSubmit, previousPage, savePage, formValues } = this.props
-//     const formSheet = {"font-size": "40px", "position": "absolute", "top": "3%", "left": "25%", "font-weight": "200"}
-//     const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
-
-//     return (
-//       <form onSubmit={handleSubmit} style={formSheet}>
-//         <div><br/><br/>
-//           <div style={heading}>Logistics</div>
-//         </div>
-//         <div>
-//           <div><label>{q1}</label></div>
-//           <div>
-//             {formValues.q1}
-//           </div>
-//         </div>
-//         <div>
-//           <div><label>{q2}</label></div>
-//           <div>
-//             {formValues.q2}
-//           </div>
-//         </div>
-//         <div>
-//           <div><label>{q3}</label></div>
-//           <div>
-//           {formValues.q3}
-//           </div>
-//         </div>
-//         <div>
-//           <div><label>{q3b}</label></div>
-//           <div>
-//           {formValues.q3b}
-//           </div>
-//         </div>
-//         <div>
-//           <div><label className="form-label">{q4}</label></div>
-//           <div>
-//           {formValues.q4}
-//           </div>
-//         </div>
-//         <div>
-//         <br/><br/>
-//           <div style={heading}>Background Information</div>
-//         </div>
-//         <div>
-//           <div><label>{q5}</label></div>
-//           <div>
-//           {formValues.q5}
-//           </div>
-//         </div>
-//         <div>
-//           <div><label>{q6}</label></div>
-//           <div>
-//           {formValues.q6}
-//           </div>
-//         </div>
-//         <div>
-//           <div><label>{q7}</label></div>
-//           <div>
-//           {formValues.q7}
-//           </div>
-//         </div>
-//         <div>
-//           <div><label>{q8}</label></div>
-//           {formValues.q8}
-//         </div>
-
-//       <div>
-//         <button type="button" className="previous" onClick={previousPage}>
-//           Previous
-//         </button>
-//         <button type="button" onClick={savePage}>
-//           Save all
-//         </button>
-//         <button type="submit" className="next">
-//           Start over
-//         </button>
-//       </div>
-//       </form>
-//     )
-//   }
-// }
-
-// export default reduxForm({
-//   form: 'OA',
-//   destroyOnUnmount: false,
-//   forceUnregisterOnUnmount: true,
-// })(OAPrintPage)
+export default OAPrintPage
