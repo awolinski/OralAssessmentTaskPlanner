@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import { tools } from './Components/DropdownOptions'
 
 const proficiency1a = 'At best, students at this level have partial command of the language and can cope with overall meaning in most situations. Although they are likely to make many mistakes, they should be able to handle basic communication in own field.'
-const proficiency1b = 'Students at this level have a generally effective command of the language despite some inaccuracies, inappropriacies and misunderstandings. THey can use and understand fairly complex language, particularly in familiar situations.'
+const proficiency1b = 'Students at this level have a generally effective command of the language despite some inaccuracies, inappropriacies and misunderstandings. They can use and understand fairly complex language, particularly in familiar situations.'
 const proficiency1c = 'Students at this level have operational command of the language, though with occasional inaccuracies, inappropriacies and misunderstandings in some situations. They generally handle complex language well and understand detailed reasoning.'
 const proficiency1d = 'At a minimum students at this level have fully operational command of the language with only occasional unsystematic inaccuracies and inappropriacies. Misunderstandings may occur in unfamiliar situations. They handles complex detailed argumentation well.'
 
@@ -23,6 +23,7 @@ const addRec13 = 'You should notify students that they will be recorded when the
 const addRec7 = 'You may want to be more flexible in your time limits to ensure that students have the opportunity to clarify misunderstandings and respond appropriately.\n'
 const addRec14 = 'You should consider how you plan to resolve the differences in the scores that are assigned by different graders.\n'
 const addRec15 = 'You may want to consider using a method to ensure that you are grading student performances consistently.'
+const addRec16 = 'Given the lower language proficiency of the class, adding subtitles and presenting instructions in various formats may be helpful.'
 
 // Red Warning after table
 const warningText = 'Since you have so few second language learners, it is especially important that you pay attention to their involvement and inclusion in your course.'
@@ -65,6 +66,8 @@ const demoImp1 = 'You may want to use more demonstrations in class.'
 const portfolioImp1 = 'Your students\' performance may be hindered if they are being recorded because of their low English proficiency.'
 const groupImp1 = 'You may want to incorporate more of it into your class.'
 const simulationImp1 = 'Using these in class will help prepare them for other interactive assessments.'
+const groupImp2 = 'When possible, you may want to arrange the class seats in pods or ways that facilitate group work.'
+const simulationImp2 = 'Try to show simulations in a variety of formats, such as video simulations or in-person simulations'
 
 class OANinthPage extends Component {
   constructor(props) {
@@ -102,7 +105,7 @@ class OANinthPage extends Component {
       participationAddRec: '',
       simulationRec: 'Not',
       simulationFactors: '',
-      simulationImp: simulationImp1,
+      simulationImp: '',
       simulationAddRec: '',
       portfolioRec: 'Not',
       portfolioFactors: '',
@@ -117,6 +120,7 @@ class OANinthPage extends Component {
   this.oralExamCalculations = this.oralExamCalculations.bind(this)
   this.interviewCalculations = this.interviewCalculations.bind(this)
   this.groupCalculations = this.groupCalculations.bind(this)
+  this.participationCalculations = this.participationCalculations.bind(this)
   this.portfolioCalculations = this.portfolioCalculations.bind(this)
   this.presentationCalculations = this.presentationCalculations.bind(this)
   this.simulationCalculations = this.simulationCalculations.bind(this)
@@ -137,6 +141,7 @@ class OANinthPage extends Component {
     this.oralExamCalculations(formValues)
     this.interviewCalculations(formValues)
     this.groupCalculations(formValues)
+    this.participationCalculations(formValues)
     this.portfolioCalculations(formValues)
     this.presentationCalculations(formValues)
     this.simulationCalculations(formValues)
@@ -194,11 +199,15 @@ class OANinthPage extends Component {
     if (formValues.q48b === 'No') {
       additionalRecs.push(addRec15)
     }
+    if (this.state.proficiencyDescription === proficiency1a || this.state.proficiencyDescription === proficiency1b) {
+      additionalRecs.push(addRec16)
+    }
 
     this.setState({ addRec: additionalRecs })
   }
 
   demoCalculations(formValues) {
+    let demoFacts = []
     if (formValues.q23 === 'Somewhat important' || formValues.q23 === 'Moderately important' || formValues.q23 === 'Highly important') {
       this.setState({ demoRec: 'Highly' })
     }
@@ -206,14 +215,33 @@ class OANinthPage extends Component {
       this.setState({ demoImp: demoImp1 })
     }
     if (formValues.q19 === 'Somewhat important' || formValues.q19 === 'Moderately important' || formValues.q19 === 'Highly important') {
-      this.setState({ demoFactors: demoFactors1 })
+      demoFacts.push(demoFactors1)
     }
+    if (formValues.q23 === 'Somewhat important' || formValues.q23 === 'Moderately important' || formValues.q23 === 'Highly important' ||  formValues.q30 === 'Somewhat important' || formValues.q30 === 'Moderately important' || formValues.q30 === 'Highly important') {
+      demoFacts.push(demoFactors2)
+    }
+    if (formValues.q32 === 'Often' || formValues.q32 === 'Very often' || formValues.q32 === 'Always') {
+      demoFacts.push(demoFactors3)
+    }
+    if (formValues.q30 === 'Often' || formValues.q30 === 'Very often' || formValues.q30 === 'Always') {
+      demoFacts.push(presentationFactors1)
+    }  
+    this.setState({ demoFactors: demoFacts })
   }
 
   oralExamCalculations(formValues) {
+    let oralFacts = []
     if (formValues.q12 === 'Often' || formValues.q12 === 'Very often' || formValues.q12 === 'Always') {
-      this.setState({ oralFactors: usedFactors, oralRec: 'Moderately' })
+      this.setState({ oralRec: 'Moderately' })
+      oralFacts.push(usedFactors)
     }
+    if (formValues.q44a === 'Yes' || formValues.q45a === 'Yes') {
+      oralFacts.push(oralFactors1)
+    }
+    if (formValues.q28 === 'Often' || formValues.q28 === 'Very often' || formValues.q28 === 'Always') {
+      oralFacts.push(oralFactors2)
+    }  
+    this.setState({ oralFactors: oralFacts })
   }
 
   interviewCalculations(formValues) {
@@ -229,39 +257,74 @@ class OANinthPage extends Component {
   }
 
   groupCalculations(formValues) {
-    if (formValues.q2 < 8) { //Need actual values
-      this.setState({ groupFactors: particAndGroupFactors1 })
-    }
+    let groupFacts = []
     if (formValues.q19 === 'Somewhat important' || formValues.q19 === 'Moderately important' || formValues.q19 === 'Highly important') {
       this.setState({ groupRec: 'Moderately' })
     }
-    if (this.state.groupRec !== 'Not') {
+    if (formValues.q21 === 'Somewhat important' || formValues.q21 === 'Moderately important' || formValues.q21 === 'Highly important' || formValues.q22 === 'Somewhat important' || formValues.q22 === 'Moderately important' || formValues.q22 === 'Highly important') {
+      this.setState({ groupRec: 'Highly' })
+      groupFacts.push(particAndGroupFactors1)
+    }
+    if (this.state.groupRec === 'Moderately'){
       this.setState({ groupImp: groupImp1 })
     }
+    if (this.state.groupRec === 'Highly') {
+      this.setState({ groupImp: `${groupImp1}${groupImp2}` })
+    }
+    if (formValues.q34 === 'Often' || formValues.q34 === 'Very often' || formValues.q34 === 'Always') {
+      groupFacts.push(groupFactors2)
+    }
+    this.setState({ groupFactors: groupFacts})
+  }
+
+  participationCalculations(formValues) {
+    let participationFacts = []
+    if (formValues.q21 === 'Somewhat important' || formValues.q21 === 'Moderately important' || formValues.q21 === 'Highly important' || formValues.q22 === 'Somewhat important' || formValues.q22 === 'Moderately important' || formValues.q22 === 'Highly important') {
+      this.setState({ participationRec: 'Highly', participationImp: groupImp2 })
+      participationFacts.push(particAndGroupFactors1)
+    }
+    if (formValues.q28 === 'Often' || formValues.q28 === 'Very often' || formValues.q28 === 'Always') {
+      participationFacts.push(participationFactors1)
+    } 
+    if (formValues.q49 === 'Moderately' || formValues.q49 === 'Completely') {
+      participationFacts.push(participationFactors2)
+    } 
+    this.setState({ participationFactors: participationFacts })
   }
 
   presentationCalculations(formValues) {
+    let presentationFacts = []
     if (formValues.q14 === 'Often' || formValues.q14 === 'Very often' || formValues.q14 === 'Always') {
-      this.setState({ presentationFactors: usedFactors, presentationRec: 'Moderately' })
+      this.setState({ presentationRec: 'Moderately' })
+      presentationFacts.push(usedFactors)
     }
     if (formValues.q20 === 'Somewhat important' || formValues.q20 === 'Moderately important' || formValues.q20 === 'Highly important') {
       this.setState({ presentationRec: 'Highly' })
     }
-    if (this.state.presentationRec !== 'Not') {
+    if (this.state.presentationRec === 'Moderately' || this.state.presentationRec === 'Highly') {
       this.setState({ presentationImp: presentationImp1 })
     }
+    if (formValues.q33 === 'Often' || formValues.q33 === 'Very often' || formValues.q33 === 'Always') {
+      presentationFacts.push(presentationFactors2)
+    }
+    if (formValues.q29 === 'Often' || formValues.q29 === 'Very often' || formValues.q29 === 'Always') {
+      presentationFacts.push(presentationFactors1)
+    }    
+      this.setState({ presentationFactors: presentationFacts })   
   }
 
   portfolioCalculations(formValues) {
+    let portfolioFacts = []
     if (formValues.q42a === 'Yes' || formValues.q42a === 'Maybe') {
-      this.setState({ portfolioFactors: portfolioFactors1 })
+      portfolioFacts.push(portfolioFactors1)
     }
     if (formValues.q20 === 'Somewhat important' || formValues.q20 === 'Moderately important' || formValues.q20 === 'Highly important') {
       this.setState({ portfolioRec: 'Highly' })
     }
     if (formValues.q55 === 'Yes') {
-      this.setState({ portfolioFactors: portfolioFactors2 })
+      portfolioFacts.push(portfolioFactors2)
     }
+    this.setState({ portfolioFactors: portfolioFacts })
   }
 
   proficiencyCalculationsAdditional(formValues) {
@@ -295,6 +358,7 @@ class OANinthPage extends Component {
   }
 
   simulationCalculations(formValues) {
+    let simulationImps = []
     if (formValues.q16a === 'Yes' && formValues.q17a === 'Yes') {
       this.setState({ simulationRec: 'Highly', simulationFactors: `${simulationFactors1} ${simulationFactors2}` })
     } else if (formValues.q16a === 'Yes') {
@@ -309,6 +373,13 @@ class OANinthPage extends Component {
     } else if (formValues.q17a === 'Yes') {
       this.setState({ simulationFactors: simulationFactors2 })
     }
+    if (formValues.q49 === 'Moderately' || formValues.q49 === 'Completely'){
+      simulationImps.push(simulationImp1)
+    }
+    if (this.state.simulationRec === 'Highly' || this.state.simulationRec === 'Moderately') {
+      simulationImps.push(simulationImp2)
+    }
+    this.setState({ simulationImp: simulationImps })
   }
 
   showWarningMessage(formValues) {

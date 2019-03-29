@@ -4,7 +4,6 @@ Designed for undergraduate English-speaking instructors, this application helps 
 
 
 ## TODO:
-    - Add navigation bar to pages
     - Write unit tests
     - Comment code
 
