@@ -22,11 +22,11 @@ const addRec12 = 'Remember to teach your students the skills that they need to p
 const addRec13 = 'You should notify students that they will be recorded when the assessment criteria are communicated.\n'
 const addRec7 = 'You may want to be more flexible in your time limits to ensure that students have the opportunity to clarify misunderstandings and respond appropriately.\n'
 const addRec14 = 'You should consider how you plan to resolve the differences in the scores that are assigned by different graders.\n'
-//const addRec15 = 'You may want to consider using a method to ensure that you are grading student performances consistently.'
+const addRec15 = 'You may want to consider using a method to ensure that you are grading student performances consistently.'
 
 // Red Warning after table
 const warningText = 'Since you have so few second language learners, it is especially important that you pay attention to their involvement and inclusion in your course.'
-const warningText2 = 'At least one other assessment method must be selected.'
+const warningText2 = 'You should assess students with at least one other assessment method.'
 
 // Constants that show up in factors row
 const portfolioFactors1 = 'You are already recording their performances.'
@@ -191,6 +191,10 @@ class OANinthPage extends Component {
     if (formValues.q51d === 'Don\t know') {
       additionalRecs.push(addRec14)
     }
+    if (formValues.q48b === 'No') {
+      additionalRecs.push(addRec15)
+    }
+
     this.setState({ addRec: additionalRecs })
   }
 
@@ -308,17 +312,19 @@ class OANinthPage extends Component {
   }
 
   showWarningMessage(formValues) {
+    let warn = []
     if (formValues.q2 <= 30) {
-      this.setState({ warning: `${warningText}` })
+      warn.push(warningText)
     }
     if  (formValues.q55 !== 'Yes') {
-      this.setState({ warning: [...this.state.warning, `${warningText2}`] })
+      warn.push(warningText2)
     }
+    this.setState({ warning: warn })
   }
 
   render () {
     const formSheet = this.props.printStyle ? this.props.printStyle : {"font-size": "15px", "position": "absolute", "top": "3%", "left": "5%", "right": "5%", "font-weight": "200"}
-    const warningStyle = {"color": "red"}
+    const warningStyle = {"color": "red", "font-size" : "16px", "line-height": "22pt"}
     const heading = {"font-weight": "250", "font-size": "30px", "textAlign": "center", "margin-top": "25px", "margin-bottom": "15px"}
     const table = {"padding": "15px", "textAlign": "center"}
 
@@ -329,10 +335,10 @@ class OANinthPage extends Component {
       <div>
         <div style={heading}>Recommendations</div>
       </div>
-      <div>Your institution’s minimum English proficiency requirements: 
+      <div style={{"font-size" : "16px", "line-height": "22pt"}}>Your institution’s minimum English proficiency requirements: 
       {this.state.showTOEFL}{this.state.showIELTS}{this.state.showTOEIC}
       </div>
-      <div>{this.state.proficiencyDescription}</div><br/>
+      <div style={{"font-size" : "16px", "line-height": "22pt"}}>{this.state.proficiencyDescription}</div><br/>
       <table style={{"background-color": "rgb(240,240,240)"}}>
         <tbody>
           <tr style={table}>
@@ -466,13 +472,11 @@ class OANinthPage extends Component {
           </tr>
         </tbody>
       </table>
-      <div>
-        <div style={warningStyle}>{this.state.warning}</div>
-      </div>
+      <div style={warningStyle}>{this.state.warning}</div>
       <div>
         <div style={heading}>Additional Recommendations</div>
       </div>
-      <div>{this.state.addRec}</div><br/><br/>
+      <div style={{"font-size" : "16px", "line-height": "22pt"}}>{this.state.addRec}</div><br/><br/>
 
       <div>
         <button type="button" className="previous" onClick={previousPage}>
